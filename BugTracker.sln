@@ -1,0 +1,44 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34728.123
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0EA59C23-9C1A-4400-B7E9-01D99C9AB17D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{4A9E692A-F37F-4B59-B865-B79D1A652DB0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{31C83C95-C857-4987-96D2-AAAF6E6425DB}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Core", "Core", "{9D33E98D-6592-430A-BEC7-A106B165FD51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastructure", "{246779EF-EAFB-4DB4-8101-18F1A79C9464}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{C4E23FCD-9C0B-492E-AA10-583164E7590E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Domain", "BugTracker.Domain\BugTracker.Domain.csproj", "{C88FBBC0-E25B-4779-93F0-47DD6424A507}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C88FBBC0-E25B-4779-93F0-47DD6424A507}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C88FBBC0-E25B-4779-93F0-47DD6424A507}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C88FBBC0-E25B-4779-93F0-47DD6424A507}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C88FBBC0-E25B-4779-93F0-47DD6424A507}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{31C83C95-C857-4987-96D2-AAAF6E6425DB} = {0EA59C23-9C1A-4400-B7E9-01D99C9AB17D}
+		{9D33E98D-6592-430A-BEC7-A106B165FD51} = {0EA59C23-9C1A-4400-B7E9-01D99C9AB17D}
+		{246779EF-EAFB-4DB4-8101-18F1A79C9464} = {0EA59C23-9C1A-4400-B7E9-01D99C9AB17D}
+		{C4E23FCD-9C0B-492E-AA10-583164E7590E} = {0EA59C23-9C1A-4400-B7E9-01D99C9AB17D}
+		{C88FBBC0-E25B-4779-93F0-47DD6424A507} = {9D33E98D-6592-430A-BEC7-A106B165FD51}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {359BDC80-E7D6-4428-8794-A0E91928600A}
+	EndGlobalSection
+EndGlobal
