@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using AutoMapper;
-using BugTracker.Application.Features.IssuePriority.Queries.GetAllPriorities;
+using BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities;
 using BugTracker.Domain;
 
 namespace BugTracker.Application.MappingProfiles

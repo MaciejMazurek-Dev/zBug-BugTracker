@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllPriorities
+namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities
 {
     public class IssuePriorityDto
     {

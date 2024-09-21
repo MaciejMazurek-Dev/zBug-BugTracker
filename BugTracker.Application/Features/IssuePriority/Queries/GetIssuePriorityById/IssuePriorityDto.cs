@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
+namespace BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriorityById
 {
-    public class IssueDto
+    public class IssuePriorityDto
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
@@ -17,6 +17,5 @@ namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
         public string Summary { get; set; } = string.Empty;
         public int ReporterId { get; set; }
         public int Assignee { get; set; }
-
     }
 }

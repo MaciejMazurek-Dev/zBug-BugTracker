@@ -7,7 +7,7 @@ using AutoMapper;
 using BugTracker.Application.Contracts.Persistence;
 using MediatR;
 
-namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllPriorities
+namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities
 {
     public class GetAllIssuePrioritiesHandler : IRequestHandler<GetAllIssuePrioritiesQuery, List<IssuePriorityDto>>
     {
