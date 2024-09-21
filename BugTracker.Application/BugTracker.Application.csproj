@@ -16,6 +16,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Folder Include="Features\IssueStatus\Commands\" />
+    <Folder Include="Features\IssueType\Commands\" />
+    <Folder Include="Features\IssueType\Queries\" />
     <Folder Include="Features\Issue\Commands\" />
   </ItemGroup>
 
