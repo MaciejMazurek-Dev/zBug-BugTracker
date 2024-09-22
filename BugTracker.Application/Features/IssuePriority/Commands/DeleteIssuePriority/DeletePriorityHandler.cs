@@ -8,15 +8,15 @@ using BugTracker.Application.Contracts.Persistence;
 
 namespace BugTracker.Application.Features.IssuePriority.Commands.DeleteIssuePriority
 {
-    public class DeleteIssuePriorityHandler : IRequestHandler<DeleteIssuePriorityCommand, Unit>
+    public class DeletePriorityHandler : IRequestHandler<DeletePriorityCommand, Unit>
     {
         private readonly IIssuePriorityRepository _issuePriorityRepository;
-        public DeleteIssuePriorityHandler(IIssuePriorityRepository issuePriorityRepository)
+        public DeletePriorityHandler(IIssuePriorityRepository issuePriorityRepository)
         {
             _issuePriorityRepository = issuePriorityRepository;
         }
 
-        public async Task<Unit> Handle(DeleteIssuePriorityCommand request, CancellationToken cancellationToken)
+        public async Task<Unit> Handle(DeletePriorityCommand request, CancellationToken cancellationToken)
         {
             var priority = await _issuePriorityRepository.GetByIdAsync(request.Id);
             await _issuePriorityRepository.DeleteAsync(priority);

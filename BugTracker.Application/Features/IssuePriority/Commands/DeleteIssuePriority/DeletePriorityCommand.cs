@@ -8,7 +8,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssuePriority.Commands.DeleteIssuePriority
 {
-    public class DeleteIssuePriorityCommand : IRequest<Unit>
+    public class DeletePriorityCommand : IRequest<Unit>
     {
         public int Id { get; set; }
     }

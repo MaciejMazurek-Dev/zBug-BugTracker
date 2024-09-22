@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 using MediatR;
 namespace BugTracker.Application.Features.IssuePriority.Commands.UpdateIssuePriority
 {
-    public class UpdateIssuePriorityCommand : IRequest<Unit>
+    public class UpdatePriorityCommand : IRequest<Unit>
     {
         public string Name { get; set; } = string.Empty;
     }

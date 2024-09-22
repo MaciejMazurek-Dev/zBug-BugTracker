@@ -7,7 +7,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities
 {
-    public class GetAllIssuePrioritiesQuery : IRequest<List<IssuePriorityDto>>
+    public class GetAllPrioritiesQuery : IRequest<List<IssuePriorityDto>>
     {
     }
 }

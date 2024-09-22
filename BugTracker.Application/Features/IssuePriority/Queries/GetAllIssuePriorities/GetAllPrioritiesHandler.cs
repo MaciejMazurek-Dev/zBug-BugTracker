@@ -9,17 +9,17 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities
 {
-    public class GetAllIssuePrioritiesHandler : IRequestHandler<GetAllIssuePrioritiesQuery, List<IssuePriorityDto>>
+    public class GetAllPrioritiesHandler : IRequestHandler<GetAllPrioritiesQuery, List<IssuePriorityDto>>
     {
         private readonly IMapper _mapper;
         private readonly IIssuePriorityRepository _issuePriorityRepository;
 
-        public GetAllIssuePrioritiesHandler(IMapper mapper, IIssuePriorityRepository issuePriorityRepository)
+        public GetAllPrioritiesHandler(IMapper mapper, IIssuePriorityRepository issuePriorityRepository)
         {
             _mapper = mapper;
             _issuePriorityRepository = issuePriorityRepository;
         }
-        public async Task<List<IssuePriorityDto>> Handle(GetAllIssuePrioritiesQuery request, CancellationToken cancellationToken)
+        public async Task<List<IssuePriorityDto>> Handle(GetAllPrioritiesQuery request, CancellationToken cancellationToken)
         {
             var priorities = await _issuePriorityRepository.GetAllAsync();
             var result = _mapper.Map<List<IssuePriorityDto>>(priorities);

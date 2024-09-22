@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BugTracker.Application.Features.IssueStatus.Queries
+namespace BugTracker.Application.Features.IssueStatus.Queries.GetAllIssueStatuses
 {
     public class IssueStatusDto
     {
