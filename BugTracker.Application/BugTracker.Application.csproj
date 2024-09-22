@@ -16,11 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\IssueType\Commands\CreateIssueType\" />
-    <Folder Include="Features\IssueType\Commands\DeleteIssueType\" />
-    <Folder Include="Features\IssueType\Commands\UpdateIssueType\" />
-    <Folder Include="Features\IssueType\Queries\GetAllIssueTypes\" />
-    <Folder Include="Features\IssueType\Queries\GetIssueById\" />
     <Folder Include="Features\Issue\Commands\" />
   </ItemGroup>
 
