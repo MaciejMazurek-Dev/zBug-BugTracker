@@ -10,18 +10,18 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssuePriority.Commands.CreateIssuePriority
 {
-    public class CreateIssuePriorityCommandHandler : IRequestHandler<CreateIssuePriorityCommand, int>
+    public class CreatePriorityCommandHandler : IRequestHandler<CreatePriorityCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IIssuePriorityRepository _issuePriorityRepository;
 
-        public CreateIssuePriorityCommandHandler(IMapper mapper, IIssuePriorityRepository issuePriorityRepository)
+        public CreatePriorityCommandHandler(IMapper mapper, IIssuePriorityRepository issuePriorityRepository)
         {
             _mapper = mapper;
             _issuePriorityRepository = issuePriorityRepository;
         }
 
-        public async Task<int> Handle(CreateIssuePriorityCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreatePriorityCommand request, CancellationToken cancellationToken)
         {
             var issuePriority = _mapper.Map<Domain.IssuePriority>(request);
             await _issuePriorityRepository.CreateAsync(issuePriority);

@@ -7,7 +7,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssueStatus.Queries
 {
-    public class GetAllIssueStatusesQuery : IRequest<List<IssueStatusDto>>
+    public class GetAllStatusesQuery : IRequest<List<IssueStatusDto>>
     {
     }
 }
