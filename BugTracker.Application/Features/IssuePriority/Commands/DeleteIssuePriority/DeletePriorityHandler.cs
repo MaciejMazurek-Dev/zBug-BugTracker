@@ -19,6 +19,7 @@ namespace BugTracker.Application.Features.IssuePriority.Commands.DeleteIssuePrio
         public async Task<Unit> Handle(DeletePriorityCommand request, CancellationToken cancellationToken)
         {
             var priority = await _issuePriorityRepository.GetByIdAsync(request.Id);
+            
             await _issuePriorityRepository.DeleteAsync(priority);
             return Unit.Value;
         }
