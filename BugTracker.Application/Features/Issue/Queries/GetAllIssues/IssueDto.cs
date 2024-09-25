@@ -11,7 +11,7 @@ namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
-        public IssueType? IssueType { get; set; }
+        public Domain.IssueType? IssueType { get; set; }
         public Domain.IssueStatus? IssueStatus { get; set; }
         public Domain.IssuePriority? IssuePriority { get; set; }
         public string Summary { get; set; } = string.Empty;
