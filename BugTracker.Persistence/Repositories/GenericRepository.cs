@@ -1,14 +1,10 @@
 ﻿using BugTracker.Application.Contracts.Persistence;
 using BugTracker.Persistence.DatabaseContext;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
 
 namespace BugTracker.Persistence.Repositories
 {
-    public class GenericRepository : IGenericRepository<T>
+    public class GenericRepository<T>  : IGenericRepository<T> where T : class
     {
         protected readonly BTDatabaseContext _dbContext;
 
@@ -17,30 +13,32 @@ namespace BugTracker.Persistence.Repositories
             _dbContext = dbContext;
         }
 
-        public Task<IReadOnlyList<T>> GetAllAsync()
+        public async Task CreateAsync(T entity)
         {
-            throw new NotImplementedException();
+            await _dbContext.AddAsync(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
-        public Task<T> GetByIdAsync(int id)
+        public async Task DeleteAsync(T entity)
         {
-            throw new NotImplementedException();
-        }
-        public Task CreateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-        public Task UpdateAsync(T entity)
-        {
-            throw new NotImplementedException();
-        }
-        public Task DeleteAsync(T entity)
-        {
-            throw new NotImplementedException();
+            _dbContext.Remove(entity);
+            await _dbContext.SaveChangesAsync();
         }
 
-        
+        public async Task<IReadOnlyList<T>> GetAllAsync()
+        {
+            return await _dbContext.Set<T>().ToListAsync();
+        }
 
-        
+        public async Task<T> GetByIdAsync(int id)
+        {
+            return await _dbContext.Set<T>().FindAsync(id);
+        }
+
+        public async Task UpdateAsync(T entity)
+        {
+            _dbContext.Update(entity);
+            await _dbContext.SaveChangesAsync();
+        }
     }
 }
