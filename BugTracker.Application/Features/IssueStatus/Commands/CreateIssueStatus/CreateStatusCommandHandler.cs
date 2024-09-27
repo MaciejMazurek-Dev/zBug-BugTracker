@@ -24,8 +24,8 @@ namespace BugTracker.Application.Features.IssueStatus.Commands.CreateIssueStatus
         public async Task<int> Handle(CreateStatusCommand request, CancellationToken cancellationToken)
         {
             var status = _mapper.Map<Domain.IssueStatus>(request);
-            var result = await _issueStatusRepository.CreateAsync(status);
-            return result.Id;
+            await _issueStatusRepository.CreateAsync(status);
+            return status.Id;
         }
     }
 }

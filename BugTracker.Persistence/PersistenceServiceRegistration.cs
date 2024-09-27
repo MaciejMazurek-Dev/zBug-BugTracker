@@ -1,12 +1,9 @@
-﻿using BugTracker.Persistence.DatabaseContext;
+﻿using BugTracker.Application.Contracts.Persistence;
+using BugTracker.Persistence.DatabaseContext;
+using BugTracker.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracker.Persistence
 {
@@ -17,6 +14,12 @@ namespace BugTracker.Persistence
         {
             services.AddDbContext<BTDatabaseContext>(options =>
                 options.UseSqlServer(configuration.GetConnectionString("BTDatabaseConnection")));
+
+            services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
+            services.AddScoped<IIssuePriorityRepository, IssuePriorityRepository>();
+            services.AddScoped<IIssueRepository, IssueRepository>();
+            services.AddScoped<IIssueStatusRepository, IssueStatusRepository>();
+            services.AddScoped<IIssueTypeRepository, IssueTypeRepository>();
 
             return services;
         }

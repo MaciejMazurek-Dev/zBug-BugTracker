@@ -38,6 +38,13 @@ namespace BugTracker.Persistence.Configurations
                     Name = "High",
                     DateCreated = DateTime.Now,
                     DateModified = DateTime.Now
+                },
+                new IssuePriority
+                {
+                    Id = 4,
+                    Name = "Critical",
+                    DateCreated = DateTime.Now,
+                    DateModified = DateTime.Now
                 });
         }
     }
