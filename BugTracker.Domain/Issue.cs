@@ -9,7 +9,7 @@ namespace BugTracker.Domain
         public IssueStatus? IssueStatus { get; set; }
         public IssuePriority? IssuePriority { get; set; }
         public string Summary { get; set; } = string.Empty;
-        public int ReporterId { get; set; }
-        public int Assignee { get; set; }
+        public string ReporterId { get; set; } = string.Empty;
+        public string Assignee { get; set; } = string.Empty;
     }
 }
