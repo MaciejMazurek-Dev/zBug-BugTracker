@@ -8,9 +8,9 @@ using System.Reflection;
 
 namespace BugTracker.Application
 {
-    public static class AppServiceRegistration
+    public static class ApplicationServiceRegistration
     {
-        public static IServiceCollection AddAppServices(this IServiceCollection services)
+        public static IServiceCollection AddApplicationServices(this IServiceCollection services)
         {
             services.AddAutoMapper(Assembly.GetExecutingAssembly());
             services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
