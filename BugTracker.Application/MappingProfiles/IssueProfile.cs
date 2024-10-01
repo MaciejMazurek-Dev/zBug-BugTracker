@@ -1,11 +1,7 @@
 ﻿using AutoMapper;
 using BugTracker.Application.Features.Issue.Queries.GetAllIssues;
+using BugTracker.Application.Features.Issue.Queries.GetIssueById;
 using BugTracker.Domain;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracker.Application.MappingProfiles
 {
@@ -13,7 +9,8 @@ namespace BugTracker.Application.MappingProfiles
     {
         public IssueProfile()
         {
-            CreateMap<IssueDto, Issue>().ReverseMap();
+            CreateMap<Issue, IssueDto>().ReverseMap();
+            CreateMap<Issue, IssueByIdDto>();
         }
     }
 }

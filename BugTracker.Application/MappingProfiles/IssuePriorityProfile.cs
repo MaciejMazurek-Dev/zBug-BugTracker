@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using AutoMapper;
+﻿using AutoMapper;
+using BugTracker.Application.Features.IssuePriority.Commands.CreateIssuePriority;
+using BugTracker.Application.Features.IssuePriority.Commands.UpdateIssuePriority;
 using BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities;
+using BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriorityById;
 using BugTracker.Domain;
 
 namespace BugTracker.Application.MappingProfiles
@@ -13,7 +11,10 @@ namespace BugTracker.Application.MappingProfiles
     {
         public IssuePriorityProfile()
         {
-            CreateMap<IssuePriority, IssuePriorityDto>();
+            CreateMap<IssuePriority, IssuePriorityDto>().ReverseMap();
+            CreateMap<IssuePriority, IssuePriorityByIdDto>();
+            CreateMap<CreatePriorityCommand, IssuePriority>();
+            CreateMap<UpdatePriorityCommand, IssuePriority>();
         }
     }
 }
