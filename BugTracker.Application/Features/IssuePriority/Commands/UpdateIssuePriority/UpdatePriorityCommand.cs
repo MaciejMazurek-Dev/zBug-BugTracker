@@ -8,6 +8,7 @@ namespace BugTracker.Application.Features.IssuePriority.Commands.UpdateIssuePrio
 {
     public class UpdatePriorityCommand : IRequest<Unit>
     {
+        public int Id { get; set; }
         public string Name { get; set; } = string.Empty;
     }
 }
