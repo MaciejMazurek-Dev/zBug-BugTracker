@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BugTracker.Application.Features.IssueType.Queries.GetIssueTypeById
+namespace BugTracker.Application.Features.IssueStatus.Queries.GetIssueStatusById
 {
-    public class IssueTypeDto
+    public class IssueStatusByIdDto
     {
         public string Name { get; set; } = string.Empty;
     }
