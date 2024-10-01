@@ -10,13 +10,13 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
 {
-    public class GetAllIssuesQueryHandler :
+    public class GetAllIssuesHandler :
         IRequestHandler<GetAllIssuesQuery, List<IssueDto>>
     {
         private readonly IMapper _mapper;
         private readonly IIssueRepository _issueRepository;
 
-        public GetAllIssuesQueryHandler(IMapper mapper, IIssueRepository issueRepository)
+        public GetAllIssuesHandler(IMapper mapper, IIssueRepository issueRepository)
         {
             this._mapper = mapper;
             this._issueRepository = issueRepository;

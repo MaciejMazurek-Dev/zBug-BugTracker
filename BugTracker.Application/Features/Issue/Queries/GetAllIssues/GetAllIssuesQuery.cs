@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
 {
-    public record GetAllIssuesQuery : IRequest<List<IssueDto>>;
+    public class GetAllIssuesQuery : IRequest<List<IssueDto>>
+    {
+    }
     
 }
