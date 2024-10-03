@@ -18,7 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Issue\Commands\" />
+    <Folder Include="Features\Issue\Commands\DeleteIssue\" />
+    <Folder Include="Features\Issue\Commands\UpdateIssue\" />
   </ItemGroup>
 
 </Project>

@@ -9,8 +9,8 @@ namespace BugTracker.Application.MappingProfiles
     {
         public IssueProfile()
         {
-            CreateMap<Issue, IssueDto>().ReverseMap();
-            CreateMap<Issue, IssueByIdDto>();
+            CreateMap<Issue, IssuesDto>().ReverseMap();
+            CreateMap<Issue, IssueDto>();
         }
     }
 }

@@ -21,14 +21,14 @@ namespace BugTracker.Api.Controllers
 
         // GET: api/<IssuePriorityController>
         [HttpGet]
-        public async Task<List<IssuePriorityDto>> Get()
+        public async Task<List<IssuePrioritiesDto>> Get()
         {
             return await _mediator.Send(new GetAllPrioritiesQuery());
         }
 
         // GET api/<IssuePriorityController>/5
         [HttpGet("{id}")]
-        public async Task<IssuePriorityByIdDto> Get(int id)
+        public async Task<IssuePriorityDto> Get(int id)
         {
             return await _mediator.Send(new GetPriorityByIdQuery() { Id = id});
         }

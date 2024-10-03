@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
 using BugTracker.Application.Contracts.Persistence;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes
 {
-    public class GetAllTypesHandler : IRequestHandler<GetAllTypesQuery, List<IssueTypeDto>>
+    public class GetAllTypesHandler : IRequestHandler<GetAllTypesQuery, List<IssueTypesDto>>
     {
         private readonly IMapper _mapper;
         private readonly IIssueTypeRepository _issueTypeRepository;
@@ -20,10 +15,10 @@ namespace BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes
             _issueTypeRepository = issueTypeRepository;
         }
 
-        public async Task<List<IssueTypeDto>> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
+        public async Task<List<IssueTypesDto>> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
         {
             var issueType = _issueTypeRepository.GetAllAsync();
-            var result = _mapper.Map<List<IssueTypeDto>>(issueType);
+            var result = _mapper.Map<List<IssueTypesDto>>(issueType);
             return result;
         }
     }
