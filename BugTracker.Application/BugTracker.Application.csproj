@@ -17,8 +17,4 @@
     <ProjectReference Include="..\BugTracker.Domain\BugTracker.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Features\Issue\Commands\UpdateIssue\" />
-  </ItemGroup>
-
 </Project>
