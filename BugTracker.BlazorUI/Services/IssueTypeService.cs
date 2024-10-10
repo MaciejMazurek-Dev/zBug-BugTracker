@@ -8,6 +8,7 @@ namespace BugTracker.BlazorUI.Services
     {
         public IssueTypeService(IClient client) : base(client)
         {
+
         }
 
         public Task<Response<Guid>> CreateIssueType(IssueTypeVM issueType)

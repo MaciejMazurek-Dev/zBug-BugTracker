@@ -1,0 +1,30 @@
+﻿using BugTracker.BlazorUI.Models.IssuePriority;
+using BugTracker.BlazorUI.Models.IssueStatus;
+using BugTracker.BlazorUI.Models.IssueTypes;
+using System.ComponentModel.DataAnnotations;
+
+namespace BugTracker.BlazorUI.Models.Issue
+{
+    public class IssueVM
+    {
+        public int Id { get; set; }
+
+        [Required]
+        public IssueTypeVM IssueType { get; set; }
+
+        [Required]
+        public IssueStatusVM IssueStatus { get; set; }
+
+        [Required]
+        public IssuePriorityVM IssuePriority { get; set; }
+
+        [Required]
+        public string Summary { get; set; }
+
+        [Required]
+        public string ReporterId { get; set; }
+
+        [Required]
+        public string Assignee { get; set; }
+    }
+}
