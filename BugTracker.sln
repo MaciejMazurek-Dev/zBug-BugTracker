@@ -25,9 +25,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.Infrastructure",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.Api", "BugTracker.Api\BugTracker.Api.csproj", "{53919095-C4BB-4DBE-B286-B00D2DC0CED3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Application.UnitTests", "BugTracker.Application.UnitTests\BugTracker.Application.UnitTests.csproj", "{702BD552-5CE0-4F03-96CC-F832AF038CEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.Application.UnitTests", "BugTracker.Application.UnitTests\BugTracker.Application.UnitTests.csproj", "{702BD552-5CE0-4F03-96CC-F832AF038CEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.BlazorUI", "BugTracker.BlazorUI\BugTracker.BlazorUI.csproj", "{1993A18C-51ED-4C41-88B6-1294E54FB969}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.BlazorUI", "BugTracker.BlazorUI\BugTracker.BlazorUI.csproj", "{1993A18C-51ED-4C41-88B6-1294E54FB969}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Identity", "BugTracker.Identity\BugTracker.Identity.csproj", "{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -63,6 +65,10 @@ Global
 		{1993A18C-51ED-4C41-88B6-1294E54FB969}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1993A18C-51ED-4C41-88B6-1294E54FB969}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1993A18C-51ED-4C41-88B6-1294E54FB969}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -79,6 +85,7 @@ Global
 		{53919095-C4BB-4DBE-B286-B00D2DC0CED3} = {31C83C95-C857-4987-96D2-AAAF6E6425DB}
 		{702BD552-5CE0-4F03-96CC-F832AF038CEC} = {4A9E692A-F37F-4B59-B865-B79D1A652DB0}
 		{1993A18C-51ED-4C41-88B6-1294E54FB969} = {C4E23FCD-9C0B-492E-AA10-583164E7590E}
+		{F35D1ADA-2268-4EA6-8D76-6F675B52CC99} = {246779EF-EAFB-4DB4-8101-18F1A79C9464}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {359BDC80-E7D6-4428-8794-A0E91928600A}
