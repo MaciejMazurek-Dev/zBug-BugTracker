@@ -1,4 +1,5 @@
 using BugTracker.Application;
+using BugTracker.Identity;
 using BugTracker.Infrastructure;
 using BugTracker.Persistence;
 
@@ -13,6 +14,7 @@ namespace BugTracker.Api
             builder.Services.AddPersistenceServices(builder.Configuration);
             builder.Services.AddInfrastructureServices(builder.Configuration);
             builder.Services.AddApplicationServices();
+            builder.Services.AddIdentityServices(builder.Configuration);
 
             builder.Services.AddControllers();
             // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -30,6 +32,7 @@ namespace BugTracker.Api
 
             app.UseHttpsRedirection();
 
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

@@ -15,7 +15,7 @@ namespace BugTracker.Identity
 {
     public static class IdentityServiceRegistration
     {
-        public static IServiceCollection AddIdentityService(
+        public static IServiceCollection AddIdentityServices(
             this IServiceCollection services,
             IConfiguration configuration)
         {
@@ -47,7 +47,7 @@ namespace BugTracker.Identity
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
                 };
             });
-
+            return services;
             
         }
     }
