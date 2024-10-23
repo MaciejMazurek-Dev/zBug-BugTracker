@@ -8,6 +8,7 @@ namespace BugTracker.Identity.DbContext
     {
         public BugTrackerIdentityDbContext(DbContextOptions<BugTrackerIdentityDbContext> options) 
             : base(options)
-        { }
+        {
+        }
     }
 }

@@ -26,6 +26,7 @@ namespace BugTracker.Identity
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddEntityFrameworkStores<BugTrackerIdentityDbContext>()
+                .AddSignInManager<SignInManager<ApplicationUser>>()
                 .AddDefaultTokenProviders();
 
             services.AddTransient<IAuthService, AuthService>();
