@@ -1,12 +1,16 @@
-﻿namespace BugTracker.BlazorUI.Services.Base
+﻿using Blazored.LocalStorage;
+
+namespace BugTracker.BlazorUI.Services.Base
 {
     public class BaseHttpService
     {
-        protected IClient _client;
+        protected readonly IClient _client;
+        protected readonly ILocalStorageService _localStorage;
 
-        public BaseHttpService(IClient client)
+        public BaseHttpService(IClient client, ILocalStorageService localStorage)
         {
             _client = client;
+            _localStorage = localStorage;
         }
 
         public Response<Guid> ConvertApiExceptions(ApiException ex)
