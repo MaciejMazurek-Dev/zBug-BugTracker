@@ -1,5 +1,7 @@
 using Blazored.LocalStorage;
+using BugTracker.BlazorUI.Providers;
 using BugTracker.BlazorUI.Services.Base;
+using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Components.WebAssembly.Hosting;
 using System.Reflection;
@@ -14,11 +16,12 @@ namespace BugTracker.BlazorUI
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
             
-            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
             builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://localhost:7082"));
 
             builder.Services.AddBlazoredLocalStorage();
+            builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
+
+            builder.Services.AddScoped<AuthenticationStateProvider, BlazorAuthenticationStateProvider>();
 
             await builder.Build().RunAsync();
         }
