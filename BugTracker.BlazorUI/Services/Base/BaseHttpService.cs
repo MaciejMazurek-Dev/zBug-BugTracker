@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using System.Net.Http.Headers;
 
 namespace BugTracker.BlazorUI.Services.Base
 {
@@ -41,6 +42,17 @@ namespace BugTracker.BlazorUI.Services.Base
                     ValidationErrors = ex.Response,
                     Success = false
                 };
+            }
+        }
+
+        public async Task AddJwtToken()
+        {
+            string? token = await _localStorage.GetItemAsync<string>("token");
+
+            if (token != null)
+            {
+                _client.HttpClient.DefaultRequestHeaders.Authorization =
+                    new AuthenticationHeaderValue("Bearer", token);
             }
         }
     }

@@ -1,13 +1,20 @@
 ﻿using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
+using BugTracker.BlazorUI.Providers;
 using BugTracker.BlazorUI.Services.Base;
 
 namespace BugTracker.BlazorUI.Services
 {
     public class AuthenticationService : BaseHttpService, IAuthenticationService
     {
-        public AuthenticationService(IClient client, ILocalStorageService localStorage) : base(client, localStorage)
+        private readonly BlazorAuthenticationStateProvider _blazorAuthenticationStateProvider;
+
+        public AuthenticationService(IClient client, 
+            ILocalStorageService localStorage,
+            BlazorAuthenticationStateProvider blazorAuthenticationStateProvider) 
+            : base(client, localStorage)
         {
+            _blazorAuthenticationStateProvider = blazorAuthenticationStateProvider;
         }
 
         public async Task<bool> LoginAsync(string email, string password)
@@ -23,7 +30,7 @@ namespace BugTracker.BlazorUI.Services
             if(loginResponse.Token != string.Empty)
             {
                 await _localStorage.SetItemAsync("token", loginResponse.Token);
-
+                await _blazorAuthenticationStateProvider.LogIn();
                 return true;
             }
             return false;
@@ -31,7 +38,7 @@ namespace BugTracker.BlazorUI.Services
 
         public async Task Logout()
         {
-            await _localStorage.RemoveItemAsync("token");
+            await _blazorAuthenticationStateProvider.LogOut();
         }
 
         public async Task<bool> RegisterAsync(string firstName, string lastName, string email, string password)
