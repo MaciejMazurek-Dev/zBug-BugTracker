@@ -1,0 +1,17 @@
+﻿@page "/login"
+
+<h2>Login</h2>
+
+<div>
+    <EditForm Model="@Model" OnValidSubmit="SubmitLogin">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label>Email:</label>
+        <InputText @bind-Value="@Model.Email" class="form-control"></InputText>
+        <label>Password:</label>
+        <InputText @bind-Value="@Model.Password" class="form-control"></InputText>
+
+        <button class="btn btn-primary" type="submit" >Login</button>
+    </EditForm>
+</div>

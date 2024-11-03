@@ -1,0 +1,21 @@
+﻿@page "/register"
+
+<h2>Register</h2>
+
+<div>
+    <EditForm Model="@Model" OnValidSubmit="SubmitRegister">
+        <DataAnnotationsValidator />
+        <ValidationSummary />
+
+        <label>First name:</label>
+        <InputText @bind-Value="@Model.FirstName" class="form-control"></InputText>
+        <label>Last name:</label>
+        <InputText @bind-Value="@Model.LastName" class="form-control"></InputText>
+        <label>Email:</label>
+        <InputText @bind-Value="@Model.Email" class="form-control"></InputText>
+        <label>Password:</label>
+        <InputText @bind-Value="@Model.Password" class="form-control"></InputText>
+
+        <button class="btn btn-primary" type="submit">Register</button>
+    </EditForm>
+</div>

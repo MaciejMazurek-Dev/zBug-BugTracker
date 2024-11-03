@@ -29,7 +29,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.Application.Unit
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.BlazorUI", "BugTracker.BlazorUI\BugTracker.BlazorUI.csproj", "{1993A18C-51ED-4C41-88B6-1294E54FB969}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BugTracker.Identity", "BugTracker.Identity\BugTracker.Identity.csproj", "{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BugTracker.Identity", "BugTracker.Identity\BugTracker.Identity.csproj", "{F35D1ADA-2268-4EA6-8D76-6F675B52CC99}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

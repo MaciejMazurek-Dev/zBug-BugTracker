@@ -1,4 +1,5 @@
-﻿using BugTracker.BlazorUI.Contracts;
+﻿using Blazored.LocalStorage;
+using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Models.IssueTypes;
 using BugTracker.BlazorUI.Services.Base;
 
@@ -6,7 +7,7 @@ namespace BugTracker.BlazorUI.Services
 {
     public class IssueTypeService : BaseHttpService, IIssueTypeService
     {
-        public IssueTypeService(IClient client) : base(client)
+        public IssueTypeService(IClient client, ILocalStorageService localStorageService) : base(client, localStorageService)
         {
 
         }
