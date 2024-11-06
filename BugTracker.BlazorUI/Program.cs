@@ -25,8 +25,8 @@ namespace BugTracker.BlazorUI
             builder.Services.AddBlazoredLocalStorage();
             builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-            builder.Services.AddScoped<AuthenticationStateProvider, BlazorAuthenticationStateProvider>();
-            builder.Services.AddScoped<BlazorAuthenticationStateProvider>();
+            builder.Services.AddScoped<CustomAuthStateProvider>();
+            builder.Services.AddScoped<AuthenticationStateProvider>(provider => provider.GetRequiredService<CustomAuthStateProvider>());
             builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
             await builder.Build().RunAsync();

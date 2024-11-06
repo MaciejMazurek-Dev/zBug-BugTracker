@@ -5,12 +5,12 @@ using System.Security.Claims;
 
 namespace BugTracker.BlazorUI.Providers
 {
-    public class BlazorAuthenticationStateProvider : AuthenticationStateProvider
+    public class CustomAuthStateProvider : AuthenticationStateProvider
     {
         private readonly ILocalStorageService _localStorage;
         private readonly JwtSecurityTokenHandler _jwtSecurityTokenHandler;
 
-        public BlazorAuthenticationStateProvider(ILocalStorageService localStorage)
+        public CustomAuthStateProvider(ILocalStorageService localStorage)
         {
             _localStorage = localStorage;
             _jwtSecurityTokenHandler = new JwtSecurityTokenHandler();
@@ -62,6 +62,7 @@ namespace BugTracker.BlazorUI.Providers
             JwtSecurityToken jwtToken = _jwtSecurityTokenHandler.ReadJwtToken(localToken);
             
             List<Claim> claims = jwtToken.Claims.ToList();
+            claims.Add(new Claim(ClaimTypes.Name, jwtToken.Subject));
             return claims;
         }
     }

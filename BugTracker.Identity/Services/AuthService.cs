@@ -57,6 +57,7 @@ namespace BugTracker.Identity.Services
         {
             var user = new ApplicationUser
             {
+                UserName = registrationRequest.Email,
                 Email = registrationRequest.Email,
                 FirstName = registrationRequest.FirstName,
                 LastName = registrationRequest.LastName

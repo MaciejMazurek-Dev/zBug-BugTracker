@@ -2,19 +2,22 @@
 using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Providers;
 using BugTracker.BlazorUI.Services.Base;
+using Microsoft.AspNetCore.Components.Authorization;
 
 namespace BugTracker.BlazorUI.Services
 {
     public class AuthenticationService : BaseHttpService, IAuthenticationService
     {
-        private readonly BlazorAuthenticationStateProvider _blazorAuthenticationStateProvider;
+        private readonly CustomAuthStateProvider _customauthStateProvider;
 
-        public AuthenticationService(IClient client, 
+
+        public AuthenticationService(
+            IClient client, 
             ILocalStorageService localStorage,
-            BlazorAuthenticationStateProvider blazorAuthenticationStateProvider) 
+            CustomAuthStateProvider customauthStateProvider)
             : base(client, localStorage)
         {
-            _blazorAuthenticationStateProvider = blazorAuthenticationStateProvider;
+            _customauthStateProvider = customauthStateProvider;
         }
 
         public async Task<bool> LoginAsync(string email, string password)
@@ -30,7 +33,7 @@ namespace BugTracker.BlazorUI.Services
             if(loginResponse.Token != string.Empty)
             {
                 await _localStorage.SetItemAsync("token", loginResponse.Token);
-                await _blazorAuthenticationStateProvider.LogIn();
+                await _customauthStateProvider.LogIn();
                 return true;
             }
             return false;
@@ -38,7 +41,7 @@ namespace BugTracker.BlazorUI.Services
 
         public async Task Logout()
         {
-            await _blazorAuthenticationStateProvider.LogOut();
+            await _customauthStateProvider.LogOut();
         }
 
         public async Task<bool> RegisterAsync(string firstName, string lastName, string email, string password)
