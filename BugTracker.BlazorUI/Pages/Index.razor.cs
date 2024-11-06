@@ -1,15 +1,14 @@
 ﻿using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Providers;
 using Microsoft.AspNetCore.Components;
-using Microsoft.AspNetCore.Components.Authorization;
 
 namespace BugTracker.BlazorUI.Pages
 {
-    public partial class Index : ComponentBase
+    public partial class Index
     {
 
         [Inject]
-        private BlazorAuthenticationStateProvider AuthStateProvider { get; set; }
+        private CustomAuthStateProvider CustomAuthStateProvider{ get; set; }
 
         [Inject]
         private IAuthenticationService AuthenticationService { get; set; }
@@ -20,11 +19,7 @@ namespace BugTracker.BlazorUI.Pages
 
         protected async override Task OnInitializedAsync()
         {
-            AuthenticationState authState = await AuthStateProvider.GetAuthenticationStateAsync();
-            if (authState == null)
-            {
-                Login();
-            }
+            await CustomAuthStateProvider.GetAuthenticationStateAsync();
         }
 
         protected async Task Logout()
@@ -34,12 +29,12 @@ namespace BugTracker.BlazorUI.Pages
 
         protected void Login()
         {
-            NavigationManager.NavigateTo("login");
+            NavigationManager.NavigateTo("/auth/login");
         }
         
         protected void Register()
         {
-            NavigationManager.NavigateTo("register");
+            NavigationManager.NavigateTo("/auth/register");
         }
         
     }

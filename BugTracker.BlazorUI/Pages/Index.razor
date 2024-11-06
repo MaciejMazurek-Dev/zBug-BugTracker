@@ -4,11 +4,14 @@
 
 <h1 class="text-center">Bug Tracker</h1>
 
-
-        <button class="btn btn-warning" @onclick="Logout">Logout</button>
-
+<AuthorizeView>
+    <Authorized>
+        <button class="btn btn-danger" @onclick="Logout">Logout</button>
+    </Authorized>
+    <NotAuthorized>
         <button class="btn btn-primary" @onclick="Login">Login</button>
         <button class="btn btn-primary" @onclick="Register">Register</button>
-
+    </NotAuthorized>
+</AuthorizeView>
 
 

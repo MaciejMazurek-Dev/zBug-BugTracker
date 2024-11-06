@@ -19,6 +19,7 @@ namespace BugTracker.BlazorUI.Pages.Auth
         public async Task SubmitLogin()
         {
             await AuthenticationService.LoginAsync(Model.Email, Model.Password);
+
         }
     }
 }
