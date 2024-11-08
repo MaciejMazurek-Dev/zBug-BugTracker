@@ -7,8 +7,8 @@ namespace BugTracker.BlazorUI.Contracts
     {
         Task<List<IssuePriorityVM>> GetAllIssuePriorities();
         Task<IssuePriorityVM> GetIssuePriorityById(int id);
-        Task<Response<Guid>> CreateIssuePriority(IssuePriorityVM issuePriority);
-        Task<Response<Guid>> UpdateIssuePriority(int id, IssuePriorityVM issuePriority);
-        Task<Response<Guid>> DeleteIssuePriority(int id);
+        Task CreateIssuePriority(IssuePriorityVM issuePriority);
+        Task UpdateIssuePriority(int id, IssuePriorityVM issuePriority);
+        Task DeleteIssuePriority(int id);
     }
 }

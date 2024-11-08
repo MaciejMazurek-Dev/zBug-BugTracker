@@ -7,8 +7,8 @@ namespace BugTracker.BlazorUI.Contracts
     {
         Task<List<IssueVM>> GetAllIssues();
         Task<IssueVM> GetIssueById(int id);
-        Task<Response<Guid>> CreateIssue(IssueVM issue);
-        Task<Response<Guid>> UpdateIssue(int id, IssueVM issue);
-        Task<Response<Guid>> DeleteIssue(int id);
+        Task CreateIssue(IssueVM issue);
+        Task UpdateIssue(int id, IssueVM issue);
+        Task DeleteIssue(int id);
     }
 }
