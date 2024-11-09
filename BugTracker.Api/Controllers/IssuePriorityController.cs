@@ -19,39 +19,39 @@ namespace BugTracker.Api.Controllers
             _mediator = mediator;
         }
 
-        // GET: api/<IssuePriorityController>
         [HttpGet]
-        public async Task<List<IssuePrioritiesDto>> Get()
+        public async Task<ActionResult<List<IssuePriorityDto>>> Get()
         {
-            return await _mediator.Send(new GetAllPrioritiesQuery());
+            var priorities =  await _mediator.Send(new GetAllPrioritiesQuery());
+            return Ok(priorities);
         }
 
-        // GET api/<IssuePriorityController>/5
         [HttpGet("{id}")]
-        public async Task<IssuePriorityDto> Get(int id)
+        public async Task<ActionResult<IssuePriorityDetailsDto>> Get(int id)
         {
-            return await _mediator.Send(new GetPriorityByIdQuery() { Id = id});
+            var priority = await _mediator.Send(new GetPriorityByIdQuery() { Id = id});
+            return Ok(priority);
         }
 
-        // POST api/<IssuePriorityController>
         [HttpPost]
-        public async Task<int> Post([FromBody] string name)
+        public async Task<ActionResult> Post(CreatePriorityCommand createPriorityCommand)
         {
-            return await _mediator.Send(new CreatePriorityCommand() { Name = name });
+            int priorityId = await _mediator.Send(createPriorityCommand);
+            return CreatedAtAction(nameof(Get), new { id = priorityId });
         }
 
-        // PUT api/<IssuePriorityController>/5
-        [HttpPut("{id}")]
-        public async Task Put(int id, [FromBody] string name)
+        [HttpPut]
+        public async Task<ActionResult> Put(UpdatePriorityCommand updatePriorityCommand)
         {
-            await _mediator.Send(new UpdatePriorityCommand() { Id = id, Name = name });
+            await _mediator.Send(updatePriorityCommand);
+            return NoContent();
         }
 
-        // DELETE api/<IssuePriorityController>/5
         [HttpDelete("{id}")]
-        public async Task Delete(int id)
+        public async Task<ActionResult> Delete(int id)
         {
             await _mediator.Send(new DeletePriorityCommand() { Id = id });
+            return NoContent();
         }
     }
 }
