@@ -4,7 +4,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssueType.Queries.GetIssueTypeById
 {
-    public class GetTypeByIdHandler : IRequestHandler<GetTypeByIdQuery, IssueTypeDto>
+    public class GetTypeByIdHandler : IRequestHandler<GetTypeByIdQuery, IssueTypeDetailsDto>
     {
         private readonly IMapper _mapper;
         private readonly IIssueTypeRepository _issueTypeRepository;
@@ -14,10 +14,10 @@ namespace BugTracker.Application.Features.IssueType.Queries.GetIssueTypeById
             _mapper = mapper;
             _issueTypeRepository = issueTypeRepository;
         }
-        public async Task<IssueTypeDto> Handle(GetTypeByIdQuery request, CancellationToken cancellationToken)
+        public async Task<IssueTypeDetailsDto> Handle(GetTypeByIdQuery request, CancellationToken cancellationToken)
         {
             var issueType = await _issueTypeRepository.GetByIdAsync(request.Id);
-            var result = _mapper.Map<IssueTypeDto>(issueType);
+            var result = _mapper.Map<IssueTypeDetailsDto>(issueType);
             return result;
         }
     }

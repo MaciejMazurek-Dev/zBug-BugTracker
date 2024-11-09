@@ -4,15 +4,15 @@ using BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes;
 
 namespace BugTracker.Application.Features.Issue.Queries.GetIssueById
 {
-    public class IssueDto
+    public class IssueDetailsDto
     {
         public int Id { get; set; }
         public int ProjectId { get; set; }
-        public IssueTypesDto IssueType { get; set; }
+        public IssueTypeDto IssueType { get; set; }
         public int IssueTypeId { get; set; }
-        public IssueStatusesDto IssueStatus { get; set; }
+        public IssueStatusDto IssueStatus { get; set; }
         public int IssueStatusId { get; set; }
-        public IssuePrioritiesDto IssuePriority { get; set; }
+        public IssuePriorityDto IssuePriority { get; set; }
         public int IssuePriopertyId { get; set; }
         public string Summary { get; set; } = string.Empty;
         public int ReporterId { get; set; }

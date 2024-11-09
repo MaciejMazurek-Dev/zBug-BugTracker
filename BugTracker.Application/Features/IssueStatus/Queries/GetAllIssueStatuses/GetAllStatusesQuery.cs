@@ -2,7 +2,7 @@
 
 namespace BugTracker.Application.Features.IssueStatus.Queries.GetAllIssueStatuses
 {
-    public class GetAllStatusesQuery : IRequest<List<IssueStatusesDto>>
+    public class GetAllStatusesQuery : IRequest<List<IssueStatusDto>>
     {
     }
 }

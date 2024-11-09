@@ -1,6 +1,6 @@
 ﻿namespace BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes
 {
-    public class IssueTypesDto
+    public class IssueTypeDto
     {
         public string Name { get; set; } = string.Empty;
     }

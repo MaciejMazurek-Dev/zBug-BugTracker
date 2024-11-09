@@ -5,7 +5,7 @@ using BugTracker.Application.Exceptions;
 
 namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
 {
-    public class CreateIssueCommandHandler : IRequestHandler<CreateIssueCommand, Unit>
+    public class CreateIssueCommandHandler : IRequestHandler<CreateIssueCommand, int>
     {
         private readonly IMapper _mapper;
         private readonly IIssueRepository _issueRepository;
@@ -16,7 +16,7 @@ namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
             _issueRepository = issueRepository;
         }
 
-        public async Task<Unit> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateIssueCommand request, CancellationToken cancellationToken)
         {
             var validator = new CreateIssueValidator();
             var validatorResult = await validator.ValidateAsync(request, cancellationToken);
@@ -28,7 +28,7 @@ namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
 
             var issue = _mapper.Map<Domain.Issue>(request);
             await _issueRepository.CreateAsync(issue);
-            return Unit.Value;
+            return issue.Id;
         }
     }
 }

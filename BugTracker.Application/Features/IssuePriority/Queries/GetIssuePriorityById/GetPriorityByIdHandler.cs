@@ -4,7 +4,7 @@ using AutoMapper;
 
 namespace BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriorityById
 {
-    public class GetPriorityByIdHandler : IRequestHandler<GetPriorityByIdQuery, IssuePriorityDto>
+    public class GetPriorityByIdHandler : IRequestHandler<GetPriorityByIdQuery, IssuePriorityDetailsDto>
     {
         private readonly IIssuePriorityRepository _issuePriorityRepository;
         private readonly IMapper _mapper;
@@ -13,10 +13,10 @@ namespace BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriority
             _issuePriorityRepository = issuePriorityRepository;
             _mapper = mapper;
         }
-        public async Task<IssuePriorityDto> Handle(GetPriorityByIdQuery request, CancellationToken cancellationToken)
+        public async Task<IssuePriorityDetailsDto> Handle(GetPriorityByIdQuery request, CancellationToken cancellationToken)
         {
             var priority = await _issuePriorityRepository.GetByIdAsync(request.Id);
-            var result = _mapper.Map<IssuePriorityDto>(priority);
+            var result = _mapper.Map<IssuePriorityDetailsDto>(priority);
             return result;
         }
     }

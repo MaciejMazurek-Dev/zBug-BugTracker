@@ -4,7 +4,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssueStatus.Queries.GetIssueStatusById
 {
-    public class GetStatusByIdHandler : IRequestHandler<GetStatusByIdQuery, IssueStatusDto>
+    public class GetStatusByIdHandler : IRequestHandler<GetStatusByIdQuery, IssueStatusDetailsDto>
     {
         private readonly IMapper _mapper;
         private readonly IIssueStatusRepository _issueStatusRepository;
@@ -15,10 +15,10 @@ namespace BugTracker.Application.Features.IssueStatus.Queries.GetIssueStatusById
             _issueStatusRepository = issueStatusRepository;
         }
 
-        public async Task<IssueStatusDto> Handle(GetStatusByIdQuery request, CancellationToken cancellationToken)
+        public async Task<IssueStatusDetailsDto> Handle(GetStatusByIdQuery request, CancellationToken cancellationToken)
         {
             var status = await _issueStatusRepository.GetByIdAsync(request.Id);
-            var result = _mapper.Map<IssueStatusDto>(status);
+            var result = _mapper.Map<IssueStatusDetailsDto>(status);
             return result;
         }
     }

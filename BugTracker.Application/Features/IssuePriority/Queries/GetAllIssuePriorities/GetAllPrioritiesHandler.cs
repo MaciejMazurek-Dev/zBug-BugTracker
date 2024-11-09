@@ -4,7 +4,7 @@ using MediatR;
 
 namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities
 {
-    public class GetAllPrioritiesHandler : IRequestHandler<GetAllPrioritiesQuery, List<IssuePrioritiesDto>>
+    public class GetAllPrioritiesHandler : IRequestHandler<GetAllPrioritiesQuery, List<IssuePriorityDto>>
     {
         private readonly IMapper _mapper;
         private readonly IIssuePriorityRepository _issuePriorityRepository;
@@ -14,10 +14,10 @@ namespace BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePrior
             _mapper = mapper;
             _issuePriorityRepository = issuePriorityRepository;
         }
-        public async Task<List<IssuePrioritiesDto>> Handle(GetAllPrioritiesQuery request, CancellationToken cancellationToken)
+        public async Task<List<IssuePriorityDto>> Handle(GetAllPrioritiesQuery request, CancellationToken cancellationToken)
         {
             var priorities = await _issuePriorityRepository.GetAllAsync();
-            var result = _mapper.Map<List<IssuePrioritiesDto>>(priorities);
+            var result = _mapper.Map<List<IssuePriorityDto>>(priorities);
             return result;
         }
     }

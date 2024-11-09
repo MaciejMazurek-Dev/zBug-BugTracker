@@ -2,9 +2,8 @@
 
 namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
 {
-    public class CreateIssueCommand : IRequest<Unit>
+    public class CreateIssueCommand : IRequest<int>
     {
-        public int ProjectId { get; set; }
         public int TypeId { get; set; }
         public int StatusId { get; set; }
         public int PriorityId { get; set; }

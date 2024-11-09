@@ -2,7 +2,7 @@
 
 namespace BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriorityById
 {
-    public class GetPriorityByIdQuery : IRequest<IssuePriorityDto>
+    public class GetPriorityByIdQuery : IRequest<IssuePriorityDetailsDto>
     {
         public int Id { get; set; }
     }

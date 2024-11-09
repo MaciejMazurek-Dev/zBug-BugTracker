@@ -17,9 +17,6 @@ namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
             RuleFor(issue => issue.PriorityId)
                 .NotEmpty()
                 .NotNull();
-            RuleFor(issue => issue.ProjectId)
-                .NotEmpty()
-                .NotNull();
             RuleFor(issue => issue.ReporterId)
                 .NotEmpty()
                 .NotNull();
