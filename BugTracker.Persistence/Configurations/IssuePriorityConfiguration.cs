@@ -1,11 +1,6 @@
 ﻿using BugTracker.Domain;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace BugTracker.Persistence.Configurations
 {
@@ -15,7 +10,7 @@ namespace BugTracker.Persistence.Configurations
         {
             builder.Property(p => p.Name)
                 .IsRequired()
-                .HasMaxLength(10);
+                .HasMaxLength(20);
 
             builder.HasData(
                 new IssuePriority
