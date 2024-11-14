@@ -20,6 +20,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<IssueTypeDetailsDto>>> Get()
         {
             var types = await _mediator.Send(new GetAllTypesQuery());
@@ -27,6 +29,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IssueTypeDto>> Get(int id)
         {
             var type = await _mediator.Send(new GetTypeByIdQuery() { Id = id });
@@ -34,6 +38,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Post(CreateTypeCommand createTypeCommand)
         {
             int typeId = await _mediator.Send(createTypeCommand);
@@ -41,6 +47,9 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Put(UpdateTypeCommand updateTypeCommand)
         {
             await _mediator.Send(updateTypeCommand);
@@ -48,6 +57,9 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(int id)
         {
             await _mediator.Send(new DeleteTypeCommand() { Id = id });

@@ -20,6 +20,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpGet]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<List<IssuePriorityDto>>> Get()
         {
             var priorities =  await _mediator.Send(new GetAllPrioritiesQuery());
@@ -27,6 +29,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpGet("{id}")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult<IssuePriorityDetailsDto>> Get(int id)
         {
             var priority = await _mediator.Send(new GetPriorityByIdQuery() { Id = id});
@@ -34,6 +38,8 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpPost]
+        [ProducesResponseType(StatusCodes.Status201Created)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult> Post(CreatePriorityCommand createPriorityCommand)
         {
             int priorityId = await _mediator.Send(createPriorityCommand);
@@ -41,6 +47,9 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpPut]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Put(UpdatePriorityCommand updatePriorityCommand)
         {
             await _mediator.Send(updatePriorityCommand);
@@ -48,6 +57,9 @@ namespace BugTracker.Api.Controllers
         }
 
         [HttpDelete("{id}")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<ActionResult> Delete(int id)
         {
             await _mediator.Send(new DeletePriorityCommand() { Id = id });
