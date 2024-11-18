@@ -11,8 +11,8 @@ namespace BugTracker.Application.MappingProfiles
     {
         public IssuePriorityProfile()
         {
-            CreateMap<IssuePriority, IssuePrioritiesDto>().ReverseMap();
-            CreateMap<IssuePriority, IssuePriorityDto>();
+            CreateMap<IssuePriority, IssuePriorityDto>().ReverseMap();
+            CreateMap<IssuePriority, IssuePriorityDetailsDto>();
             CreateMap<CreatePriorityCommand, IssuePriority>();
             CreateMap<UpdatePriorityCommand, IssuePriority>();
         }
