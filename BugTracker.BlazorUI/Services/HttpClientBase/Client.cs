@@ -1,4 +1,4 @@
-﻿namespace BugTracker.BlazorUI.Services.Base
+﻿namespace BugTracker.BlazorUI.Services.HttpClientBase
 {
     public partial class Client : IClient
     {

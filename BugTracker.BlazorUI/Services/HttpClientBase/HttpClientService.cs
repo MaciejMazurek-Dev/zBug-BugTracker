@@ -1,7 +1,7 @@
 ﻿using Blazored.LocalStorage;
 using System.Net.Http.Headers;
 
-namespace BugTracker.BlazorUI.Services.Base
+namespace BugTracker.BlazorUI.Services.HttpClientBase
 {
     public class HttpClientService
     {
