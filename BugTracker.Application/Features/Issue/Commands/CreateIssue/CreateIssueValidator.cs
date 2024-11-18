@@ -11,22 +11,13 @@ namespace BugTracker.Application.Features.Issue.Commands.CreateIssue
     {
         public CreateIssueValidator()
         {
-            RuleFor(issue => issue.Assignee)
-                .NotEmpty()
-                .NotNull();
-            RuleFor(issue => issue.PriorityId)
-                .NotEmpty()
-                .NotNull();
-            RuleFor(issue => issue.ReporterId)
-                .NotEmpty()
-                .NotNull();
-            RuleFor(issue => issue.StatusId)
+            RuleFor(issue => issue.IssuePriorityId)
                 .NotEmpty()
                 .NotNull();
             RuleFor(issue => issue.Summary)
                 .NotEmpty()
                 .NotNull();
-            RuleFor(issue => issue.TypeId)
+            RuleFor(issue => issue.IssueTypeId)
                 .NotEmpty()
                 .NotNull();
         }

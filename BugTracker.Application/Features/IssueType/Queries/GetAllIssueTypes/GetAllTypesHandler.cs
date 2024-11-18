@@ -17,7 +17,7 @@ namespace BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes
 
         public async Task<List<IssueTypeDto>> Handle(GetAllTypesQuery request, CancellationToken cancellationToken)
         {
-            var issueType = _issueTypeRepository.GetAllAsync();
+            var issueType = await _issueTypeRepository.GetAllAsync();
             var result = _mapper.Map<List<IssueTypeDto>>(issueType);
             return result;
         }
