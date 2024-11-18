@@ -2392,6 +2392,9 @@ namespace BugTracker.BlazorUI.Services.HttpClientBase
         [System.Text.Json.Serialization.JsonPropertyName("issuePriorityId")]
         public int IssuePriorityId { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string Description { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("summary")]
         public string Summary { get; set; }
 
@@ -2452,6 +2455,9 @@ namespace BugTracker.BlazorUI.Services.HttpClientBase
         [System.Text.Json.Serialization.JsonPropertyName("summary")]
         public string Summary { get; set; }
 
+        [System.Text.Json.Serialization.JsonPropertyName("description")]
+        public string Description { get; set; }
+
         [System.Text.Json.Serialization.JsonPropertyName("reporterId")]
         public int ReporterId { get; set; }
 
@@ -2466,6 +2472,9 @@ namespace BugTracker.BlazorUI.Services.HttpClientBase
 
         [System.Text.Json.Serialization.JsonPropertyName("id")]
         public int Id { get; set; }
+
+        [System.Text.Json.Serialization.JsonPropertyName("summary")]
+        public string Summary { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("issueType")]
         public IssueTypeDto IssueType { get; set; }

@@ -14,6 +14,7 @@ namespace BugTracker.Domain
         public int IssuePriorityId { get; set; }
 
         public string Summary { get; set; } = string.Empty;
+        public string Description { get; set; } = string.Empty;
         public string ReporterId { get; set; } = string.Empty;
         public string? AssigneeId { get; set; } = null;
     }

@@ -18,14 +18,8 @@ namespace BugTracker.BlazorUI.Services
         
         public async Task CreateIssue(CreateIssueVM issue)
         {
-            CreateIssueCommand createIssueCommand = new CreateIssueCommand()
-            {
-                IssuePriorityId = issue.IssuePriorityId,
-                Summary = issue.Summary,
-                IssueTypeId = issue.IssueTypeId,
-            };
-            await _client.IssuePOSTAsync(createIssueCommand);
-            
+            var command = _mapper.Map<CreateIssueCommand>(issue);
+            await _client.IssuePOSTAsync(command);
         }
 
         public Task DeleteIssue(int id)
@@ -40,10 +34,10 @@ namespace BugTracker.BlazorUI.Services
 
         }
 
-        public async Task<IssueVM> GetIssueById(int id)
+        public async Task<IssueDetailsVM> GetIssueById(int id)
         {
             var issue = await _client.IssueGETAsync(id);
-            return _mapper.Map<IssueVM>(issue);
+            return _mapper.Map<IssueDetailsVM>(issue);
         }
 
         public Task UpdateIssue(int id, IssueVM issue)

@@ -14,6 +14,9 @@ namespace BugTracker.BlazorUI.Models.Issue
         public int IssuePriorityId { get; set; }
 
         [Required]
+        public string Description { get; set; }
+
+        [Required]
         public string Summary { get; set; }
     }
 }

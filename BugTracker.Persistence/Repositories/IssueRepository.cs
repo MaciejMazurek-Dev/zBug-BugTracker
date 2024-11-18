@@ -44,7 +44,9 @@ namespace BugTracker.Persistence.Repositories
                 .Include(q => q.IssuePriority)
                 .Where(q => q.ReporterId == userId)
                 .ToListAsync();
+            
             return issues;
         }
+
     }
 }

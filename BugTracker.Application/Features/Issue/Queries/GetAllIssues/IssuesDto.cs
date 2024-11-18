@@ -8,6 +8,7 @@ namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
     public class IssueDto
     {
         public int Id { get; set; }
+        public string Summary { get; set; }
         public IssueTypeDto IssueType { get; set; }
         public IssueStatusDto IssueStatus { get; set; }
         public IssuePriorityDto IssuePriority { get; set; }
