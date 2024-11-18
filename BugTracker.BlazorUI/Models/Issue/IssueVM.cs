@@ -1,6 +1,6 @@
 ﻿using BugTracker.BlazorUI.Models.IssuePriority;
 using BugTracker.BlazorUI.Models.IssueStatus;
-using BugTracker.BlazorUI.Models.IssueTypes;
+using BugTracker.BlazorUI.Models.IssueType;
 using System.ComponentModel.DataAnnotations;
 
 namespace BugTracker.BlazorUI.Models.Issue
@@ -24,7 +24,6 @@ namespace BugTracker.BlazorUI.Models.Issue
         [Required]
         public string ReporterId { get; set; }
 
-        [Required]
-        public string Assignee { get; set; }
+        public string? Assignee { get; set; }
     }
 }

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace BugTracker.BlazorUI.Models.IssueTypes
+namespace BugTracker.BlazorUI.Models.IssueType
 {
     public class IssueTypeVM
     {
