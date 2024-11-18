@@ -29,32 +29,30 @@ namespace BugTracker.Identity.Services
 
         public async Task<LoginResponse> Login(LoginRequest loginRequest)
         {
-            var user = await _userManager.FindByEmailAsync(loginRequest.Email);
+            LoginResponse loginResponse = new LoginResponse();
 
+            var user = await _userManager.FindByEmailAsync(loginRequest.Email);
             if (user == null)
             {
-                throw new NotFoundException($"User {loginRequest.Email} not found.", loginRequest.Email);
+                return loginResponse;
             }
 
-            var result = await _signInManager.CheckPasswordSignInAsync(user, loginRequest.Password, false);
-
-            if (result.Succeeded == false)
+            var signInResult = await _signInManager.CheckPasswordSignInAsync(user, loginRequest.Password, false);
+            if (signInResult.Succeeded == false)
             {
-                throw new BadRequestException($"Wrong password for user: {loginRequest}.");
+                return loginResponse;
             }
 
             JwtSecurityToken jwtSecurityToken = await GenerateToken(user);
-
-            var loginResponse = new LoginResponse
-            {
-                Token = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken)
-            };
-
+            string jwtToken = new JwtSecurityTokenHandler().WriteToken(jwtSecurityToken);
+            loginResponse.Token = jwtToken;
             return loginResponse;
         }
 
         public async Task<RegisterResponse> Register(RegisterRequest registrationRequest)
         {
+            RegisterResponse registerResponse = new RegisterResponse();
+
             var user = new ApplicationUser
             {
                 UserName = registrationRequest.Email,
@@ -64,14 +62,14 @@ namespace BugTracker.Identity.Services
             };
 
             var result = await _userManager.CreateAsync(user, registrationRequest.Password);
-
             if(result.Succeeded)
             {
-                return new RegisterResponse(){ UserId = user.Id };
+                registerResponse.UserId = user.Id;
+                return registerResponse;
             }
             else
             {
-                throw new BadRequestException($"{result.Errors}");
+                return registerResponse;
             }
         }
 
@@ -81,9 +79,10 @@ namespace BugTracker.Identity.Services
 
             var tokenClaims = new[]
             {
-                new Claim(JwtRegisteredClaimNames.Sub, user.Id),
+                new Claim(JwtRegisteredClaimNames.Sub, user.UserName),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString()),
-                new Claim(JwtRegisteredClaimNames.Email, user.Email)
+                new Claim(JwtRegisteredClaimNames.Email, user.Email),
+                new Claim("uid", user.Id)
             }
             .Union(userClaims);
 
