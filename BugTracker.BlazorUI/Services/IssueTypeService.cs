@@ -1,30 +1,40 @@
 ﻿using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
-using BugTracker.BlazorUI.Models.IssueTypes;
-using BugTracker.BlazorUI.Services.Base;
+using BugTracker.BlazorUI.Models.IssueType;
+using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.Services
 {
-    public class IssueTypeService : BaseHttpService, IIssueTypeService
+    public class IssueTypeService : HttpClientService, IIssueTypeService
     {
-        public IssueTypeService(IClient client, ILocalStorageService localStorageService) : base(client, localStorageService)
+        public IssueTypeService(IClient client, ILocalStorageService localStorageService) 
+            : base(client, localStorageService)
         {
-
         }
 
-        public Task<Response<Guid>> CreateIssueType(IssueTypeVM issueType)
+        public Task CreateIssueType(IssueTypeVM issueType)
         {
             throw new NotImplementedException();
         }
 
-        public Task<Response<Guid>> DeleteIssueType(int id)
+        public Task DeleteIssueType(int id)
         {
             throw new NotImplementedException();
         }
 
-        public Task<List<IssueTypeVM>> GetAllIssueTypes()
+        public async Task<List<IssueTypeVM>> GetAllIssueTypes()
         {
-            throw new NotImplementedException();
+            List<IssueTypeVM> result = new List<IssueTypeVM>();
+            var issueTypes = await _client.IssueTypeAllAsync();
+            foreach(var type in issueTypes)
+            {
+                result.Add(new IssueTypeVM
+                {
+                    Id = type.Id,
+                    Name = type.Name
+                });
+            }
+            return result;
         }
 
         public Task<IssueTypeVM> GetIssueTypeById(int id)
@@ -32,7 +42,7 @@ namespace BugTracker.BlazorUI.Services
             throw new NotImplementedException();
         }
 
-        public Task<Response<Guid>> UpdateIssueType(int id, IssueTypeVM issueType)
+        public Task UpdateIssueType(int id, IssueTypeVM issueType)
         {
             throw new NotImplementedException();
         }

@@ -1,5 +1,5 @@
 ﻿using BugTracker.BlazorUI.Models.IssuePriority;
-using BugTracker.BlazorUI.Services.Base;
+using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.Contracts
 {

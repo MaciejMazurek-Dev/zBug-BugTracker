@@ -1,5 +1,5 @@
 ﻿using BugTracker.BlazorUI.Models.Issue;
-using BugTracker.BlazorUI.Services.Base;
+using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.Contracts
 {
@@ -7,7 +7,7 @@ namespace BugTracker.BlazorUI.Contracts
     {
         Task<List<IssueVM>> GetAllIssues();
         Task<IssueVM> GetIssueById(int id);
-        Task CreateIssue(IssueVM issue);
+        Task CreateIssue(CreateIssueVM issue);
         Task UpdateIssue(int id, IssueVM issue);
         Task DeleteIssue(int id);
     }

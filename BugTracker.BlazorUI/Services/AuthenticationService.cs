@@ -1,12 +1,11 @@
 ﻿using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Providers;
-using BugTracker.BlazorUI.Services.Base;
-using Microsoft.AspNetCore.Components.Authorization;
+using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.Services
 {
-    public class AuthenticationService : BaseHttpService, IAuthenticationService
+    public class AuthenticationService : HttpClientService, IAuthenticationService
     {
         private readonly CustomAuthStateProvider _customauthStateProvider;
 
