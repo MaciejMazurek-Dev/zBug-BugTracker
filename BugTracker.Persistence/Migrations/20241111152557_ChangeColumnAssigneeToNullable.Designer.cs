@@ -4,6 +4,7 @@ using BugTracker.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugTracker.Persistence.Migrations
 {
     [DbContext(typeof(BTDatabaseContext))]
-    partial class BTDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241111152557_ChangeColumnAssigneeToNullable")]
+    partial class ChangeColumnAssigneeToNullable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -30,7 +33,7 @@ namespace BugTracker.Persistence.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("AssigneeId")
+                    b.Property<string>("Assignee")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime?>("DateCreated")
@@ -39,13 +42,13 @@ namespace BugTracker.Persistence.Migrations
                     b.Property<DateTime?>("DateModified")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IssuePriorityId")
+                    b.Property<int?>("IssuePriorityId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IssueStatusId")
+                    b.Property<int?>("IssueStatusId")
                         .HasColumnType("int");
 
-                    b.Property<int>("IssueTypeId")
+                    b.Property<int?>("IssueTypeId")
                         .HasColumnType("int");
 
                     b.Property<string>("ReporterId")
@@ -94,29 +97,29 @@ namespace BugTracker.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7782),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7844),
+                            DateCreated = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5209),
+                            DateModified = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5259),
                             Name = "Low"
                         },
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7848),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7850),
+                            DateCreated = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5264),
+                            DateModified = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5266),
                             Name = "Medium"
                         },
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7852),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7854),
+                            DateCreated = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5269),
+                            DateModified = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5271),
                             Name = "High"
                         },
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7857),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7859),
+                            DateCreated = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5273),
+                            DateModified = new DateTime(2024, 11, 11, 16, 25, 56, 714, DateTimeKind.Local).AddTicks(5275),
                             Name = "Critical"
                         });
                 });
@@ -227,21 +230,15 @@ namespace BugTracker.Persistence.Migrations
                 {
                     b.HasOne("BugTracker.Domain.IssuePriority", "IssuePriority")
                         .WithMany()
-                        .HasForeignKey("IssuePriorityId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IssuePriorityId");
 
                     b.HasOne("BugTracker.Domain.IssueStatus", "IssueStatus")
                         .WithMany()
-                        .HasForeignKey("IssueStatusId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IssueStatusId");
 
                     b.HasOne("BugTracker.Domain.IssueType", "IssueType")
                         .WithMany()
-                        .HasForeignKey("IssueTypeId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("IssueTypeId");
 
                     b.Navigation("IssuePriority");
 

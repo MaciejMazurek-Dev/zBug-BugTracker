@@ -4,6 +4,7 @@ using BugTracker.Persistence.DatabaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BugTracker.Persistence.Migrations
 {
     [DbContext(typeof(BTDatabaseContext))]
-    partial class BTDatabaseContextModelSnapshot : ModelSnapshot
+    [Migration("20241115125825_RefactorIssueTable")]
+    partial class RefactorIssueTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,29 +97,29 @@ namespace BugTracker.Persistence.Migrations
                         new
                         {
                             Id = 1,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7782),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7844),
+                            DateCreated = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7137),
+                            DateModified = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7187),
                             Name = "Low"
                         },
                         new
                         {
                             Id = 2,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7848),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7850),
+                            DateCreated = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7276),
+                            DateModified = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7278),
                             Name = "Medium"
                         },
                         new
                         {
                             Id = 3,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7852),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7854),
+                            DateCreated = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7281),
+                            DateModified = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7283),
                             Name = "High"
                         },
                         new
                         {
                             Id = 4,
-                            DateCreated = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7857),
-                            DateModified = new DateTime(2024, 11, 15, 15, 57, 48, 296, DateTimeKind.Local).AddTicks(7859),
+                            DateCreated = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7286),
+                            DateModified = new DateTime(2024, 11, 15, 13, 58, 24, 460, DateTimeKind.Local).AddTicks(7288),
                             Name = "Critical"
                         });
                 });
