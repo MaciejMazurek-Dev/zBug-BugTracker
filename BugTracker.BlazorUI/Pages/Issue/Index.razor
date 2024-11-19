@@ -1,0 +1,40 @@
+﻿@page "/issue"
+
+<div>
+    <a class="btn btn-primary" href="/issue/create">Create issue</a>
+</div>
+<div>
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Id</th>
+                <th scope="col">Summary</th>
+                <th scope="col">Type</th>
+                <th scope="col">Status</th>
+                <th scope="col">Priority</th>
+                <th scope="col">Reporter</th>
+                <th scope="col">Assignee</th>
+                <th scope="col">Details</th>
+                <th scope="col">Update</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var issue in Issues)
+            {
+                <tr>
+                    <td>@issue.Id</td>
+                    <td>@issue.Summary</td>
+                    <td>@issue.IssueType.Name</td>
+                    <td>@issue.IssueStatus.Name</td>
+                    <td>@issue.IssuePriority.Name</td>
+                    <td>@issue.ReporterId</td>
+                    <td>@issue.Assignee</td>
+                    <td><a href="/issue/@issue.Id"class="btn btn-info">Details</a></td>
+                    <td><a class="btn btn-primary">Update</a></td>
+                    <td><a class="btn btn-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

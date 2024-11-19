@@ -1,0 +1,12 @@
+﻿@page "/issue/{id:int}"
+
+<h3>Issue Details</h3>
+
+<p>Id: @IssueModel.Id</p>
+<p>Summary: @IssueModel.Summary</p>
+<p>Description: @IssueModel.Description</p>
+<p>Reporter: @IssueModel.ReporterId</p>
+<p>Priority: @IssueModel.IssuePriority.Name</p>
+<p>Type: @IssueModel.IssueType.Name</p>
+<p>Status: @IssueModel.IssueStatus.Name</p>
+<p>Assignee: @IssueModel.Assignee</p>

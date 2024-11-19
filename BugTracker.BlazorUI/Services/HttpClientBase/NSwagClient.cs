@@ -2431,26 +2431,14 @@ namespace BugTracker.BlazorUI.Services.HttpClientBase
         [System.Text.Json.Serialization.JsonPropertyName("id")]
         public int Id { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("projectId")]
-        public int ProjectId { get; set; }
-
         [System.Text.Json.Serialization.JsonPropertyName("issueType")]
         public IssueTypeDto IssueType { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("issueTypeId")]
-        public int IssueTypeId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("issueStatus")]
         public IssueStatusDto IssueStatus { get; set; }
 
-        [System.Text.Json.Serialization.JsonPropertyName("issueStatusId")]
-        public int IssueStatusId { get; set; }
-
         [System.Text.Json.Serialization.JsonPropertyName("issuePriority")]
         public IssuePriorityDto IssuePriority { get; set; }
-
-        [System.Text.Json.Serialization.JsonPropertyName("issuePriopertyId")]
-        public int IssuePriopertyId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("summary")]
         public string Summary { get; set; }
@@ -2459,10 +2447,10 @@ namespace BugTracker.BlazorUI.Services.HttpClientBase
         public string Description { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("reporterId")]
-        public int ReporterId { get; set; }
+        public string ReporterId { get; set; }
 
         [System.Text.Json.Serialization.JsonPropertyName("assignee")]
-        public int Assignee { get; set; }
+        public string Assignee { get; set; }
 
     }
 
