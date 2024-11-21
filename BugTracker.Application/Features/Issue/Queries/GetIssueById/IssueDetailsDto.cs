@@ -13,6 +13,6 @@ namespace BugTracker.Application.Features.Issue.Queries.GetIssueById
         public string Summary { get; set; } = string.Empty;
         public string Description { get; set; } = string.Empty;
         public string ReporterId { get; set; }
-        public string? Assignee { get; set; }
+        public string? AssigneeId { get; set; }
     }
 }

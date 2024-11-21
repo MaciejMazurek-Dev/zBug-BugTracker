@@ -15,7 +15,7 @@
                 <th scope="col">Reporter</th>
                 <th scope="col">Assignee</th>
                 <th scope="col">Details</th>
-                <th scope="col">Update</th>
+                <th scope="col">Edit</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
@@ -29,10 +29,10 @@
                     <td>@issue.IssueStatus.Name</td>
                     <td>@issue.IssuePriority.Name</td>
                     <td>@issue.ReporterId</td>
-                    <td>@issue.Assignee</td>
+                    <td>@issue.AssigneeId</td>
                     <td><a href="/issue/@issue.Id"class="btn btn-info">Details</a></td>
-                    <td><a class="btn btn-primary">Update</a></td>
-                    <td><a class="btn btn-danger">Delete</a></td>
+                    <td><a href="/issue/edit/@issue.Id"class="btn btn-primary">Update</a></td>
+                    <td><a href="/issue/delete/@issue.Id"class="btn btn-danger">Delete</a></td>
                 </tr>
             }
         </tbody>

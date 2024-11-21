@@ -6,5 +6,6 @@ namespace BugTracker.Application.Contracts.Identity
     {
         public string GetCurrentUserId();
         public Task<UserModel> GetUser(string id);
+        public Task<List<UserModel>> GetUsers();
     }
 }

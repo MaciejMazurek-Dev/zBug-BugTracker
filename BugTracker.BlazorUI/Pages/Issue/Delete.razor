@@ -1,7 +1,8 @@
-﻿@page "/issue/{id:int}"
+﻿@page "/issue/delete/{id:int}"
 
-<h3>Issue Details</h3>
+<h3>Delete</h3>
 
+<h2>Are you sure that you want to delete: </h2>
 
 <p>Id: @IssueModel.Id</p>
 <p>Summary: @IssueModel.Summary</p>
@@ -11,3 +12,7 @@
 <p>Type: @IssueModel.IssueType.Name</p>
 <p>Status: @IssueModel.IssueStatus.Name</p>
 <p>Assignee: @IssueModel.AssigneeId</p>
+
+<button class="btn btn-danger" @onclick="DeleteIssue">Yes</button>
+
+<button class="btn btn-primary" href="/issue/">No</button>

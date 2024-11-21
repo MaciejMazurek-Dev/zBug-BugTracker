@@ -24,6 +24,6 @@ namespace BugTracker.BlazorUI.Models.Issue
         [Required]
         public string ReporterId { get; set; }
 
-        public string? Assignee { get; set; }
+        public string? AssigneeId { get; set; }
     }
 }

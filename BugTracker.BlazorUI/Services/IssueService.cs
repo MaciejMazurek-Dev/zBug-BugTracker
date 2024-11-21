@@ -15,18 +15,6 @@ namespace BugTracker.BlazorUI.Services
         {
             _mapper = mapper;
         }
-        
-        public async Task CreateIssue(CreateIssueVM issue)
-        {
-            var command = _mapper.Map<CreateIssueCommand>(issue);
-            await _client.IssuePOSTAsync(command);
-        }
-
-        public Task DeleteIssue(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public async Task<List<IssueVM>> GetAllIssues()
         {
             var issues = await _client.IssueAllAsync();
@@ -40,9 +28,21 @@ namespace BugTracker.BlazorUI.Services
             return _mapper.Map<IssueDetailsVM>(issue);
         }
 
-        public Task UpdateIssue(int id, IssueVM issue)
+        public async Task CreateIssue(CreateIssueVM issue)
         {
-            throw new NotImplementedException();
+            var command = _mapper.Map<CreateIssueCommand>(issue);
+            await _client.IssuePOSTAsync(command);
+        }
+
+        public async Task DeleteIssue(int id)
+        {
+            await _client.IssueDELETEAsync(id);
+        }
+
+        public async Task UpdateIssue(IssueDetailsVM issue)
+        {
+            var issueCommand = _mapper.Map<UpdateIssueCommand>(issue);
+            await _client.IssuePUTAsync(issueCommand);
         }
     }
 }

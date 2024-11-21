@@ -43,13 +43,15 @@ namespace BugTracker.BlazorUI.Providers
             }
 
             JwtSecurityToken token = _jwtSecurityTokenHandler.ReadJwtToken(localToken);
-
+            
+            //TODO Fix token expiration
+            /*
             if(token.ValidTo < DateTime.Now)
             {
                 await _localStorage.RemoveItemAsync("token");
                 return new AuthenticationState(user);
             }
-
+            */
             var claims = await GetClaims();
             user = new ClaimsPrincipal(new ClaimsIdentity(claims, "jwt"));
             return new AuthenticationState(user);

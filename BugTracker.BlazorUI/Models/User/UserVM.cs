@@ -1,6 +1,6 @@
-﻿namespace BugTracker.Application.Models.Identity
+﻿namespace BugTracker.BlazorUI.Models.User
 {
-    public class UserModel
+    public class UserVM
     {
         public string Id { get; set; }
         public string FirstName { get; set; }

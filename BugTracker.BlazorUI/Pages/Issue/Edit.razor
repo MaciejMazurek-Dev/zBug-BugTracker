@@ -1,0 +1,55 @@
+﻿@page "/issue/edit/{id:int}"
+
+<h3>Edit issue: @IssueModel.Id</h3>
+
+<EditForm FormName="CreateIssue" Model="@IssueModel" OnValidSubmit="Update">
+    <DataAnnotationsValidator />
+    <ValidationSummary />
+    <div>
+        <label for="summary">Summary:</label>
+        <InputTextArea class="form-control" id="summary" @bind-Value="IssueModel.Summary"></InputTextArea>
+        <label for="description">Description:</label>
+        <InputTextArea class="form-control" id="description" @bind-Value="IssueModel.Description"></InputTextArea>
+        <label for="type">Type:</label>
+        <InputSelect class="form-control" id="type" @bind-Value="IssueModel.IssueType.Id">
+            @foreach (var issueType in IssueTypes)
+            {
+                <option value="@issueType.Id">@issueType.Name</option>
+            }
+        </InputSelect>
+        <label for="priority">Priority:</label>
+        <InputSelect class="form-control" id="priority" @bind-Value="IssueModel.IssuePriority.Id">
+            @foreach (var issuePriority in IssuePriorities)
+            {
+                <option value="@issuePriority.Id">@issuePriority.Name</option>
+            }
+        </InputSelect>
+        <label for="state">State:</label>
+        <InputSelect class="form-control" id="state" @bind-Value="IssueModel.IssueStatus.Id">
+            @foreach (var issueStatus in IssueStatuses)
+            {
+                <option value="@issueStatus.Id">@issueStatus.Name</option>
+            }
+        </InputSelect>
+        <label for="reporter">Reporter:</label>
+        <InputSelect class="form-control" id="reporter" @bind-Value="IssueModel.ReporterId">
+            @foreach (var user in UsersList)
+            {
+                <option value="@user.Id">@user.LastName @user.FirstName</option>
+            }
+        </InputSelect>
+        <label for="assignee">Assignee:</label>
+        <InputSelect class="form-control" id="assignee" @bind-Value="IssueModel.AssigneeId">
+            @if(IssueModel.AssigneeId == null)
+                    {
+                        <option >Unassigned</option>
+                    }
+            @foreach (var user in UsersList)
+            {
+                <option value="@user.Id">@user.LastName @user.FirstName @user.Id</option>
+            }
+        </InputSelect>
+    </div>
+    <button class="btn btn-primary" type="submit">Create issue</button>
+</EditForm>
+

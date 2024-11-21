@@ -9,6 +9,13 @@ namespace BugTracker.Application.Features.Issue.Commands.UpdateIssue
 {
     public class UpdateIssueCommand : IRequest<Unit>
     {
-        public string Name { get; set; }
+        public int Id { get; set; }
+        public int IssueTypeId { get; set; }
+        public int IssuePriorityId { get; set; }
+        public int IssueStatusId { get; set; }
+        public string Description { get; set; } 
+        public string Summary { get; set; } 
+        public string ReporterId { get; set; } 
+        public string? AssigneeId { get; set; } 
     }
 }

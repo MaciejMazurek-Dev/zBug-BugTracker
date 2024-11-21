@@ -3,6 +3,7 @@ using BugTracker.Application.Models.Identity;
 using BugTracker.Identity.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 
 namespace BugTracker.Identity.Services
@@ -28,11 +29,21 @@ namespace BugTracker.Identity.Services
             var user = await _userManager.FindByIdAsync(id);
             return new UserModel
             {
-                Id = user.Id,
-                Email = user.Email,
                 FirstName = user.FirstName,
                 LastName = user.LastName
             };
+        }
+
+        public async Task<List<UserModel>> GetUsers()
+        {
+            var users = await _userManager.Users
+                .Select(u => new UserModel
+                {
+                    Id = u.Id,
+                    FirstName = u.FirstName,
+                    LastName = u.LastName
+                }).ToListAsync();
+            return users;
         }
 
         

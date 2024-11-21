@@ -13,6 +13,6 @@ namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
         public IssueStatusDto IssueStatus { get; set; }
         public IssuePriorityDto IssuePriority { get; set; }
         public string ReporterId { get; set; }
-        public string? Assignee { get; set; }
+        public string? AssigneeId { get; set; }
     }
 }

@@ -10,13 +10,13 @@ namespace BugTracker.BlazorUI.Models.Issue
         public int Id { get; set; }
 
         [Required]
-        public IssueTypeVM IssueType { get; set; }
+        public IssueTypeVM IssueType { get; set; } = new();
 
         [Required]
-        public IssueStatusVM IssueStatus { get; set; }
+        public IssueStatusVM IssueStatus { get; set; } = new();
 
         [Required]
-        public IssuePriorityVM IssuePriority { get; set; }
+        public IssuePriorityVM IssuePriority { get; set; } = new();
 
         [Required]
         public string Description { get; set; }
@@ -27,6 +27,6 @@ namespace BugTracker.BlazorUI.Models.Issue
         [Required]
         public string ReporterId { get; set; }
 
-        public string? Assignee { get; set; }
+        public string? AssigneeId { get; set; }
     }
 }
