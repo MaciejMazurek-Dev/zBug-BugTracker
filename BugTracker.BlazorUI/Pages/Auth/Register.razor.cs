@@ -6,19 +6,19 @@ namespace BugTracker.BlazorUI.Pages.Auth
 {
     public partial class Register
     {
-        public RegisterVM Model { get; set; }
+        public RegisterVM Model { get; set; } = new();
+        public string Message { get; set; } = string.Empty;
+        [Inject] IAuthenticationService AuthenticationService { get; set; }
+        [Inject] NavigationManager NavigationManager { get; set; }
 
-        [Inject]
-        private IAuthenticationService AuthenticationService { get; set; }
-
-        protected override void OnInitialized()
+        protected async Task SubmitRegister()
         {
-            Model = new RegisterVM();
-        }
-
-        public async Task SubmitRegister()
-        {
-            await AuthenticationService.RegisterAsync(Model.FirstName, Model.LastName, Model.Email, Model.Password);
+            bool result = await AuthenticationService.RegisterAsync(Model);
+            if(result)
+            {
+                NavigationManager.NavigateTo("/issue");
+            }
+            Message = "Something went wrong, please try again.";
         }
     }
 }

@@ -6,20 +6,19 @@ namespace BugTracker.BlazorUI.Pages.Auth
 {
     public partial class Login
     {
-        public LoginVM Model { get; set; }
-
-        [Inject]
-        private IAuthenticationService AuthenticationService { get; set; }
-
-        protected override void OnInitialized()
-        {
-            Model = new LoginVM();
-        }
+        public LoginVM Model { get; set; } = new();
+        public string Message { get; set; } = string.Empty;
+        [Inject]IAuthenticationService AuthenticationService { get; set; }
+        [Inject]NavigationManager NavigationManager { get; set; }
 
         public async Task SubmitLogin()
         {
-            await AuthenticationService.LoginAsync(Model.Email, Model.Password);
-
-        }
+            bool result = await AuthenticationService.LoginAsync(Model);
+            if(result)
+            {
+                NavigationManager.NavigateTo("/issue");
+            }
+            Message = "Wrong email or password.";
+        } 
     }
 }

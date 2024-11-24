@@ -31,6 +31,7 @@ namespace BugTracker.Identity
 
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IAdminService, AdminService>();
 
             services.AddAuthentication(options =>
             {

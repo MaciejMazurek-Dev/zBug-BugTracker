@@ -36,6 +36,7 @@ namespace BugTracker.BlazorUI
             builder.Services.AddScoped<IIssueService, IssueService>();
             builder.Services.AddScoped<IIssueStatusService, IssueStatusService>();
             builder.Services.AddScoped<IUserService, UserService>();
+            builder.Services.AddScoped<IAdminService, AdminService>();
 
             await builder.Build().RunAsync();
         }

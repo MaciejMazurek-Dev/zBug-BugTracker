@@ -4,8 +4,8 @@ using BugTracker.Application.Features.Issue.Commands.CreateIssue;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using BugTracker.Application.Features.Issue.Commands.UpdateIssue;
-using Microsoft.AspNetCore.Http.HttpResults;
 using BugTracker.Application.Features.Issue.Commands.DeleteIssue;
+using BugTracker.Application.Contracts.Identity;
 
 namespace BugTracker.Api.Controllers
 {
@@ -14,6 +14,7 @@ namespace BugTracker.Api.Controllers
     public class IssueController : ControllerBase
     {
         private readonly IMediator _mediator;
+        private readonly IUserService _userService;
 
         public IssueController(IMediator mediator)
         {

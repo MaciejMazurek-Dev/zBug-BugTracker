@@ -1,5 +1,8 @@
-﻿using Blazored.LocalStorage;
+﻿using AutoMapper;
+using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
+using BugTracker.BlazorUI.Models.Authentication;
+using BugTracker.BlazorUI.Pages.Auth;
 using BugTracker.BlazorUI.Providers;
 using BugTracker.BlazorUI.Services.HttpClientBase;
 
@@ -8,27 +11,22 @@ namespace BugTracker.BlazorUI.Services
     public class AuthenticationService : HttpClientService, IAuthenticationService
     {
         private readonly CustomAuthStateProvider _customauthStateProvider;
-
-
+        private readonly IMapper _mapper;
         public AuthenticationService(
             IClient client, 
             ILocalStorageService localStorage,
-            CustomAuthStateProvider customauthStateProvider)
+            CustomAuthStateProvider customauthStateProvider,
+            IMapper mapper)
             : base(client, localStorage)
         {
             _customauthStateProvider = customauthStateProvider;
+            _mapper = mapper;
         }
 
-        public async Task<bool> LoginAsync(string email, string password)
+        public async Task<bool> LoginAsync(LoginVM loginVM)
         {
-            LoginRequest loginRequest = new LoginRequest()
-            {
-                Email = email,
-                Password = password
-            };
-
+            var loginRequest = _mapper.Map<LoginRequest>(loginVM);
             LoginResponse loginResponse = await _client.LoginAsync(loginRequest);
-
             if(loginResponse.Token != string.Empty)
             {
                 await _localStorage.SetItemAsync("token", loginResponse.Token);
@@ -43,16 +41,9 @@ namespace BugTracker.BlazorUI.Services
             await _customauthStateProvider.LogOut();
         }
 
-        public async Task<bool> RegisterAsync(string firstName, string lastName, string email, string password)
+        public async Task<bool> RegisterAsync(RegisterVM registerVM)
         {
-            RegisterRequest registerRequest = new RegisterRequest()
-            {
-                Email = email,
-                FirstName = firstName,
-                LastName = lastName,
-                Password = password
-            };
-
+            var registerRequest = _mapper.Map<RegisterRequest>(registerVM);
             RegisterResponse registerResponse = await _client.RegisterAsync(registerRequest);
             if(!string.IsNullOrEmpty(registerResponse.UserId))
             {

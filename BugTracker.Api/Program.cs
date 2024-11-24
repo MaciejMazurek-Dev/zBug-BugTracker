@@ -37,7 +37,7 @@ namespace BugTracker.Api
                 app.UseSwagger();
                 app.UseSwaggerUI();
             }
-
+            
             app.UseHttpsRedirection();
             app.UseCors("CorsPolicy");
 

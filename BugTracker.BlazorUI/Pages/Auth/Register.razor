@@ -1,7 +1,12 @@
 ﻿@page "/auth/register"
 
 <h2>Register</h2>
-
+@if (!string.IsNullOrEmpty(Message))
+{
+    <div class="alert alert-danger">
+        @Message
+    </div>
+}
 <div>
     <EditForm Model="@Model" OnValidSubmit="SubmitRegister">
         <DataAnnotationsValidator />
