@@ -4,10 +4,12 @@ using BugTracker.Application.Features.IssueType.Commands.UpdateIssueType;
 using BugTracker.Application.Features.IssueType.Queries.GetAllIssueTypes;
 using BugTracker.Application.Features.IssueType.Queries.GetIssueTypeById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BugTracker.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IssueTypeController : ControllerBase

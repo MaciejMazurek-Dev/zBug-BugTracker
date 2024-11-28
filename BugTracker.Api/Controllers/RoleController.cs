@@ -1,7 +1,6 @@
 ﻿using BugTracker.Application.Contracts.Identity;
 using BugTracker.Application.Models.Identity;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BugTracker.Api.Controllers
@@ -18,7 +17,7 @@ namespace BugTracker.Api.Controllers
             _roleService = roleService;
         }
 
-        [HttpGet]
+        [HttpGet(Name ="GetAllRoles")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<List<RoleModel>>> GetAllRoles()
@@ -27,12 +26,12 @@ namespace BugTracker.Api.Controllers
             return Ok(result);
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetUserRoles")]
         [ProducesResponseType(StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
-        public async Task<ActionResult<List<RoleModel>>> GetRoles(string userId)
+        public async Task<ActionResult<List<RoleModel>>> GetUserRoles(string id)
         {
-            var result = await _roleService.GetRoles(userId);
+            var result = await _roleService.GetRoles(id);
             return result;
         }
     }

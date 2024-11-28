@@ -6,9 +6,11 @@ using Microsoft.AspNetCore.Mvc;
 using BugTracker.Application.Features.Issue.Commands.UpdateIssue;
 using BugTracker.Application.Features.Issue.Commands.DeleteIssue;
 using BugTracker.Application.Contracts.Identity;
+using Microsoft.AspNetCore.Authorization;
 
 namespace BugTracker.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IssueController : ControllerBase

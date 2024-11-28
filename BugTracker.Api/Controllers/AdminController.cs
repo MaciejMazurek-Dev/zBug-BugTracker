@@ -7,7 +7,6 @@ namespace BugTracker.Api.Controllers
     [Authorize(Roles = "Admin")]
     [Route("api/[controller]")]
     [ApiController]
-    
     public class AdminController : ControllerBase
     {
         private readonly IAdminService _adminService;

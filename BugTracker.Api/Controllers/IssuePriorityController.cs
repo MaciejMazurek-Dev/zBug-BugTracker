@@ -4,10 +4,12 @@ using BugTracker.Application.Features.IssuePriority.Commands.UpdateIssuePriority
 using BugTracker.Application.Features.IssuePriority.Queries.GetAllIssuePriorities;
 using BugTracker.Application.Features.IssuePriority.Queries.GetIssuePriorityById;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BugTracker.Api.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class IssuePriorityController : ControllerBase
