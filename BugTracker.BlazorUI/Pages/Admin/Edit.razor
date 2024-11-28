@@ -1,0 +1,9 @@
+﻿@page "/admin/user/{id}"
+@attribute [Authorize(Roles = "Admin")]
+
+<h3>Add role</h3>
+<EditForm Model="@RoleModel" OnValidSubmit="AddRole">
+    <InputText class="form-control" @bind-Value="RoleModel.Name"></InputText>
+
+    <button class="btn btn-primary" type="submit">Add role</button>
+</EditForm>

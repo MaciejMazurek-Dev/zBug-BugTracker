@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
-using BugTracker.BlazorUI.Models.User;
+using BugTracker.BlazorUI.Models.Role;
 using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.MappingProfiles
 {
-    public class AdminProfile : Profile
+    public class RoleProfile : Profile
     {
-        public AdminProfile()
+        public RoleProfile()
         {
-            CreateMap<UserModel, UserVM>();
+            CreateMap<RoleModel, RoleVM>();
         }
     }
 }

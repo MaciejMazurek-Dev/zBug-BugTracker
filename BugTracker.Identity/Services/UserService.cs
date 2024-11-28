@@ -12,11 +12,15 @@ namespace BugTracker.Identity.Services
     {
         private readonly IHttpContextAccessor _httpContextAccessor;
         private readonly UserManager<ApplicationUser> _userManager;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(IHttpContextAccessor httpContextAccessor, UserManager<ApplicationUser> userManager)
+        public UserService(IHttpContextAccessor httpContextAccessor, 
+            UserManager<ApplicationUser> userManager,
+            RoleManager<IdentityRole> roleManager)
         {
             _httpContextAccessor = httpContextAccessor;
             _userManager = userManager;
+            _roleManager = roleManager;
         }
 
         public string GetCurrentUserId()
@@ -45,7 +49,7 @@ namespace BugTracker.Identity.Services
                 }).ToListAsync();
             return users;
         }
-
         
+
     }
 }

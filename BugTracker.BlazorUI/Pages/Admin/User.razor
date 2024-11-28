@@ -1,5 +1,5 @@
 ﻿@page "/admin/user"
-
+@attribute [Authorize(Roles = "Admin")]
 <h3>Users list</h3>
 
 <table class="table">
@@ -8,16 +8,17 @@
             <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
-            <th><button class="btn btn-primary">Edit</button></th>
+            <th>>Edit</th>
         </tr>
     </thead>
     <tbody>
         <tr>
-            @foreach (var user in Model)
+            @foreach (var user in Users)
             {
                 <td>@user.Id</td>
                 <td>@user.FirstName</td>
                 <td>@user.LastName</td>
+                <td><button class="btn btn-primary" href="/admin/user/@user.Id">Edit</button></td>
             }
         </tr>
     </tbody>

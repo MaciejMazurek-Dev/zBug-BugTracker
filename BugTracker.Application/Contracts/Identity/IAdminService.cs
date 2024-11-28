@@ -4,6 +4,7 @@ namespace BugTracker.Application.Contracts.Identity
 {
     public interface IAdminService
     {
-        public Task<List<UserModel>> GetUsers();
+        Task<bool> AddRole(string userId, string roleName);
+        
     }
 }

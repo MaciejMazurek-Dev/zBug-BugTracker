@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
-using BugTracker.BlazorUI.Models.Admin;
 using BugTracker.BlazorUI.Services.HttpClientBase;
 
 namespace BugTracker.BlazorUI.Services
@@ -16,10 +15,9 @@ namespace BugTracker.BlazorUI.Services
             _mapper = mapper;
         }
 
-        public async Task<List<UserVM>> GetUsers()
+        public async Task AddRole(string userId, string roleName)
         {
-            var users = await _client.AdminAsync();
-            return _mapper.Map<List<UserVM>>(users);
+            await _client.AddRoleAsync(userId, roleName);
         }
     }
 }

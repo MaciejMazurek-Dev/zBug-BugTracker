@@ -1,9 +1,7 @@
-﻿using BugTracker.BlazorUI.Models.Admin;
-
-namespace BugTracker.BlazorUI.Contracts
+﻿namespace BugTracker.BlazorUI.Contracts
 {
     public interface IAdminService
     {
-        public Task<List<UserVM>> GetUsers();
+        public Task AddRole(string userId, string roleName);
     }
 }

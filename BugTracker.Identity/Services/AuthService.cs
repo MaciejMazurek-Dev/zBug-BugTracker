@@ -58,12 +58,14 @@ namespace BugTracker.Identity.Services
                 UserName = registrationRequest.Email,
                 Email = registrationRequest.Email,
                 FirstName = registrationRequest.FirstName,
-                LastName = registrationRequest.LastName
+                LastName = registrationRequest.LastName,
+                
             };
 
             var result = await _userManager.CreateAsync(user, registrationRequest.Password);
             if(result.Succeeded)
             {
+                await _userManager.AddToRoleAsync(user, "User");
                 registerResponse.UserId = user.Id;
                 return registerResponse;
             }
@@ -76,6 +78,8 @@ namespace BugTracker.Identity.Services
         private async Task<JwtSecurityToken> GenerateToken(ApplicationUser user)
         {
             var userClaims = await _userManager.GetClaimsAsync(user);
+            var roles = await _userManager.GetRolesAsync(user);
+            var userRoles = roles.Select(r => new Claim(ClaimTypes.Role, r)).ToList();
 
             var tokenClaims = new[]
             {
@@ -84,8 +88,9 @@ namespace BugTracker.Identity.Services
                 new Claim(JwtRegisteredClaimNames.Email, user.Email),
                 new Claim("uid", user.Id)
             }
-            .Union(userClaims);
-
+            .Union(userClaims)
+            .Union(userRoles);
+            
             var symmetricSecurityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));
             var signingCredentials = new SigningCredentials(symmetricSecurityKey, SecurityAlgorithms.HmacSha256);
 

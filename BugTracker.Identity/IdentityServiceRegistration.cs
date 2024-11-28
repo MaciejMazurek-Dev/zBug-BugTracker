@@ -25,6 +25,7 @@ namespace BugTracker.Identity
                 options.UseSqlServer(configuration.GetConnectionString("BTIdentityConnection")));
 
             services.AddIdentityCore<ApplicationUser>()
+                .AddRoles<IdentityRole>()
                 .AddEntityFrameworkStores<BugTrackerIdentityDbContext>()
                 .AddSignInManager<SignInManager<ApplicationUser>>()
                 .AddDefaultTokenProviders();
@@ -32,6 +33,7 @@ namespace BugTracker.Identity
             services.AddTransient<IAuthService, AuthService>();
             services.AddTransient<IUserService, UserService>();
             services.AddTransient<IAdminService, AdminService>();
+            services.AddTransient<IRoleService, RoleService>();
 
             services.AddAuthentication(options =>
             {
@@ -50,8 +52,8 @@ namespace BugTracker.Identity
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:Key"]))
                 };
             });
+
             return services;
-            
         }
     }
 }
