@@ -22,7 +22,8 @@ namespace BugTracker.Identity
             services.Configure<JwtSettings>(configuration.GetSection("JwtSettings"));
 
             services.AddDbContext<BugTrackerIdentityDbContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BTIdentityConnection")));
+                //options.UseSqlServer(configuration.GetConnectionString("BTIdentityConnection")));
+                options.UseNpgsql(configuration.GetConnectionString("BTPostgresIdentity")));
 
             services.AddIdentityCore<ApplicationUser>()
                 .AddRoles<IdentityRole>()

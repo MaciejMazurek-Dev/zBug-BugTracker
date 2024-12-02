@@ -13,7 +13,7 @@ namespace BugTracker.Identity.DbContext
 
         protected override void OnModelCreating(ModelBuilder builder)
         {
-            builder.ApplyConfigurationsFromAssembly(typeof(BugTrackerIdentityDbContext).Assembly);
+            //builder.ApplyConfigurationsFromAssembly(typeof(BugTrackerIdentityDbContext).Assembly);
             base.OnModelCreating(builder);
         }
     }

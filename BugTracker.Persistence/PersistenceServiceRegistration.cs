@@ -13,7 +13,8 @@ namespace BugTracker.Persistence
             IConfiguration configuration)
         {
             services.AddDbContext<BTDatabaseContext>(options =>
-                options.UseSqlServer(configuration.GetConnectionString("BTDatabaseConnection")));
+                //options.UseSqlServer(configuration.GetConnectionString("BTDatabaseConnection")));
+                options.UseNpgsql(configuration.GetConnectionString("BTPostgres")));
 
             services.AddScoped(typeof(IGenericRepository<>), typeof(GenericRepository<>));
             services.AddScoped<IIssuePriorityRepository, IssuePriorityRepository>();
