@@ -17,29 +17,21 @@ namespace BugTracker.Persistence.Configurations
                 {
                     Id = 1,
                     Name = "Low",
-                    DateCreated = DateTime.Now,
-                    DateModified = DateTime.Now
                 },
                 new IssuePriority
                 {
                     Id = 2,
                     Name = "Medium",
-                    DateCreated = DateTime.Now,
-                    DateModified = DateTime.Now
                 },
                 new IssuePriority
                 {
                     Id = 3,
                     Name = "High",
-                    DateCreated = DateTime.Now,
-                    DateModified = DateTime.Now
                 },
                 new IssuePriority
                 {
                     Id = 4,
                     Name = "Critical",
-                    DateCreated = DateTime.Now,
-                    DateModified = DateTime.Now
                 });
         }
     }

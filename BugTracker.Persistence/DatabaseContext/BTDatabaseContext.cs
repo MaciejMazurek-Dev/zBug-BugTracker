@@ -22,8 +22,8 @@ namespace BugTracker.Persistence.DatabaseContext
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            //TODO Fix error with seeding
-            //modelBuilder.ApplyConfigurationsFromAssembly(typeof(BTDatabaseContext).Assembly);
+            
+            modelBuilder.ApplyConfigurationsFromAssembly(typeof(BTDatabaseContext).Assembly);
             base.OnModelCreating(modelBuilder);
         }
         
