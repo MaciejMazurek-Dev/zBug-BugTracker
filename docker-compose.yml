@@ -1,0 +1,27 @@
+services:
+  bugtracker.api:
+    image: ${DOCKER_REGISTRY-}bugtrackerapi
+    container_name: bugtracker.api
+    build:
+      context: .
+      dockerfile: BugTracker.Api/Dockerfile
+    ports:
+        - "5000:5000"
+        - "5001:5001"
+    
+  bugtracker.database:
+    image: postgres:latest
+    container_name: bugtracker.database
+    environment:
+        - POSTGRES_DB=bugtracker
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+    ports:
+        - 5432:5432
+
+
+   
+    
+
+
+  
