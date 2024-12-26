@@ -1,13 +1,9 @@
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
 }
 
 h1:focus {
     outline: none;
-}
-
-a, .btn-link {
-    color: #0071c1;
 }
 
 .btn-primary {
@@ -17,7 +13,7 @@ a, .btn-link {
 }
 
 .btn:focus, .btn:active:focus, .btn-link.nav-link:focus, .form-control:focus, .form-check-input:focus {
-  box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
+    box-shadow: 0 0 0 0.1rem white, 0 0 0 0.25rem #258cfb;
 }
 
 .content {
@@ -98,6 +94,44 @@ a, .btn-link {
         content: var(--blazor-load-percentage-text, "Loading");
     }
 
-code {
+.code {
     color: #c02d76;
 }
+
+.navbar {
+    background-color: #9E80F6;
+    padding-top: 4px;
+    padding-bottom: 4px;
+}
+
+.nav {
+    background-color: rgb(145,118,226);
+}
+
+.text-body-bg-color {
+    color: #9E80F6;
+}
+
+.btn-violet {
+    background-color: #9E80F6;
+    color: white;
+}
+
+.nav-tabs .nav-link {
+    color: white;
+    background-color: rgb(145,118,226);
+    transition: all 0.3s ease;
+}
+
+.icon-tab {
+    width: 24px;
+    height: 24px;
+}
+
+.nav-item{
+    padding-top: 6px;
+}
+
+
+
+

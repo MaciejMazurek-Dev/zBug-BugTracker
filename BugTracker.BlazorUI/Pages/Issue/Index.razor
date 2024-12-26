@@ -1,10 +1,7 @@
 ﻿@page "/issue"
 
 <div>
-    <a class="btn btn-primary" href="/issue/create">Create issue</a>
-</div>
-<div>
-    <table class="table">
+    <table class="table table-hover table-light">
         <thead>
             <tr>
                 <th scope="col">Id</th>
@@ -31,8 +28,10 @@
                     <td>@issue.ReporterId</td>
                     <td>@issue.AssigneeId</td>
                     <td><a href="/issue/@issue.Id"class="btn btn-info">Details</a></td>
-                    <td><a href="/issue/edit/@issue.Id"class="btn btn-primary">Update</a></td>
-                    <td><a href="/issue/delete/@issue.Id"class="btn btn-danger">Delete</a></td>
+                    <AuthorizeView Roles="Admin">
+                        <td><a href="/issue/edit/@issue.Id" class="btn btn-primary">Edit</a></td>
+                        <td><a href="/issue/delete/@issue.Id" class="btn btn-danger">Delete</a></td>
+                    </AuthorizeView>
                 </tr>
             }
         </tbody>

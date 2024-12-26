@@ -1,16 +1,15 @@
-﻿@page "/"
+﻿@using BugTracker.BlazorUI.Pages.Auth
+
+@page "/"
+
 
 <PageTitle>Bug Tracker</PageTitle>
-
-<h1 class="text-center">Bug Tracker</h1>
-
 <AuthorizeView>
     <Authorized>
-        <button class="btn btn-danger" @onclick="Logout">Logout</button>
+        <a class="btn btn-primary" href="/issue/create">CREATE NEW ISSUE</a>
     </Authorized>
     <NotAuthorized>
-        <button class="btn btn-primary" @onclick="Login">Login</button>
-        <button class="btn btn-primary" @onclick="Register">Register</button>
+        <RedirectToLogin />
     </NotAuthorized>
 </AuthorizeView>
 

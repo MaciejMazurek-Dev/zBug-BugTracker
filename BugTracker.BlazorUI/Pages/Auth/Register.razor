@@ -1,26 +1,49 @@
 ﻿@page "/auth/register"
 
-<h2>Register</h2>
 @if (!string.IsNullOrEmpty(Message))
 {
     <div class="alert alert-danger">
         @Message
     </div>
 }
-<div>
-    <EditForm Model="@Model" OnValidSubmit="SubmitRegister">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-
-        <label>First name:</label>
-        <InputText @bind-Value="@Model.FirstName" class="form-control"></InputText>
-        <label>Last name:</label>
-        <InputText @bind-Value="@Model.LastName" class="form-control"></InputText>
-        <label>Email:</label>
-        <InputText @bind-Value="@Model.Email" class="form-control"></InputText>
-        <label>Password:</label>
-        <InputText @bind-Value="@Model.Password" class="form-control"></InputText>
-
-        <button class="btn btn-primary" type="submit">Register</button>
-    </EditForm>
+<div class="d-flex justify-content-center align-items-center vh-100 bg-orange">
+    <div class="p-4 border rounded bg-white">
+        <h1 class="text-body-bg-color text-center">Bug Tracker</h1>
+        <h3 class="text-center">Register</h3>
+        <EditForm Model="@RegisterModel" OnValidSubmit="SubmitRegister">
+            <DataAnnotationsValidator />
+            <div class="m-2">
+                <label>First name:</label>
+                <InputText @bind-Value="@RegisterModel.FirstName" class="form-control"></InputText>
+                <ValidationMessage For="() => RegisterModel.FirstName" />
+            </div>
+            <div class="m-2">
+                <label>Last name:</label>
+                <InputText @bind-Value="@RegisterModel.LastName" class="form-control"></InputText>
+                <ValidationMessage For="() => RegisterModel.LastName" />
+            </div>
+            <div class="m-2">
+                <label>Email:</label>
+                <InputText @bind-Value="@RegisterModel.Email" class="form-control"></InputText>
+                <ValidationMessage For="() => RegisterModel.Email" />
+            </div>
+            <div class="m-2">
+                <label>Password:</label>
+                <InputText @bind-Value="@RegisterModel.Password" class="form-control"></InputText>
+                <ValidationMessage For="() => RegisterModel.Password" />
+            </div>
+            <div class="m-2">
+                <label>Confirm password:</label>
+                <InputText @bind-Value="@RegisterModel.ConfirmPassword" class="form-control"></InputText>
+                <ValidationMessage For="() => RegisterModel.ConfirmPassword" />
+            </div>
+            <div class="m-2">
+                <button class="btn btn-primary w-100" type="submit">Register</button>
+            </div>
+        </EditForm>
+        <div class="fs-6 fw-light fst-italic mt-3">
+            <p class="mb-0">Already have an account?</p>
+            <a href="/auth/login">Login here</a>
+        </div>
+    </div>
 </div>

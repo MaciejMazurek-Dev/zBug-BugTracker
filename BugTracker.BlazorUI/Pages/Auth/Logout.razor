@@ -1,2 +1,15 @@
-﻿@page "/auth/logout"
-<h3>Logout</h3>
+﻿@using BugTracker.BlazorUI.Contracts
+  
+@page "/auth/logout"
+@attribute [Authorize]
+@inject IAuthenticationService AuthService  
+@inject NavigationManager NavManager
+
+@code{
+    protected override async Task OnInitializedAsync()
+    {
+        await AuthService.Logout();
+        NavManager.NavigateTo("/");
+    }
+}
+

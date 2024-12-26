@@ -1,5 +1,5 @@
 ﻿@page "/issue/edit/{id:int}"
-
+@attribute [Authorize(Roles = "Admin")]
 <h3>Edit issue: @IssueModel.Id</h3>
 
 <EditForm FormName="CreateIssue" Model="@IssueModel" OnValidSubmit="Update">
@@ -40,10 +40,10 @@
         </InputSelect>
         <label for="assignee">Assignee:</label>
         <InputSelect class="form-control" id="assignee" @bind-Value="IssueModel.AssigneeId">
-            @if(IssueModel.AssigneeId == null)
-                    {
-                        <option >Unassigned</option>
-                    }
+            @if (IssueModel.AssigneeId == null)
+            {
+                <option>Unassigned</option>
+            }
             @foreach (var user in UsersList)
             {
                 <option value="@user.Id">@user.LastName @user.FirstName @user.Id</option>

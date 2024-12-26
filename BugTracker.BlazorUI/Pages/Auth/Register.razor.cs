@@ -6,14 +6,14 @@ namespace BugTracker.BlazorUI.Pages.Auth
 {
     public partial class Register
     {
-        public RegisterVM Model { get; set; } = new();
+        public RegisterVM RegisterModel { get; set; } = new();
         public string Message { get; set; } = string.Empty;
         [Inject] IAuthenticationService AuthenticationService { get; set; }
         [Inject] NavigationManager NavigationManager { get; set; }
 
         protected async Task SubmitRegister()
         {
-            bool result = await AuthenticationService.RegisterAsync(Model);
+            bool result = await AuthenticationService.RegisterAsync(RegisterModel);
             if(result)
             {
                 NavigationManager.NavigateTo("/issue");

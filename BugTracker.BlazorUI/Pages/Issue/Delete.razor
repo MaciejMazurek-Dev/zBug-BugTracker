@@ -1,5 +1,5 @@
 ﻿@page "/issue/delete/{id:int}"
-
+@attribute [Authorize(Roles = "Admin")]
 <h3>Delete</h3>
 
 <h2>Are you sure that you want to delete: </h2>

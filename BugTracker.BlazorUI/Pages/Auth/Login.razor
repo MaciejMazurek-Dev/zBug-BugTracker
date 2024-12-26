@@ -1,22 +1,32 @@
 ﻿@page "/auth/login"
 
-<h2>Login</h2>
 @if (!string.IsNullOrEmpty(Message))
 {
     <div class="alert alert-danger">
         @Message
     </div>
 }
-<div>
-    <EditForm Model="@Model" OnValidSubmit="SubmitLogin">
-        <DataAnnotationsValidator />
-        <ValidationSummary />
-
-        <label>Email:</label>
-        <InputText @bind-Value="@Model.Email" class="form-control"></InputText>
-        <label>Password:</label>
-        <InputText @bind-Value="@Model.Password" class="form-control"></InputText>
-
-        <button class="btn btn-primary" type="submit">Login</button>
-    </EditForm>
+    <div class="d-flex justify-content-center align-items-center vh-100 bg-orange">
+        <div class="p-4 border rounded bg-white">
+            <h1 class="text-body-bg-color text-center">Bug Tracker</h1>
+            <h3 class="text-center">Login</h3>
+            <EditForm Model="@LoginModel" OnValidSubmit="SubmitLogin">
+                <DataAnnotationsValidator />
+                <div class="m-2">
+                    <label>Email address:</label>
+                    <InputText @bind-Value="@LoginModel.Email" class="form-control"></InputText>
+                    <ValidationMessage For="() => LoginModel.Email" />
+                </div>
+                <div class="m-2">
+                    <label>Password:</label>
+                    <InputText @bind-Value="@LoginModel.Password" class="form-control"></InputText>
+                    <ValidationMessage For="() => LoginModel.Password" />
+                </div>
+                <button class="btn btn-primary w-100" type="submit">Login</button>
+            </EditForm>
+            <div class="fs-6 fw-light fst-italic mt-3">
+                <p class="mb-0">Don’t have an account?</p>
+                <a href="/auth/register">Register here</a>
+            </div>
+        </div>
 </div>

@@ -22,11 +22,6 @@ namespace BugTracker.BlazorUI.Pages
             await CustomAuthStateProvider.GetAuthenticationStateAsync();
         }
 
-        protected async Task Logout()
-        {
-            await AuthenticationService.Logout();
-        }
-
         protected void Login()
         {
             NavigationManager.NavigateTo("/auth/login");
