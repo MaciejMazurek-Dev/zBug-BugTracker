@@ -98,7 +98,7 @@ namespace BugTracker.Identity.Services
                 issuer: _jwtSettings.Issuer,
                 audience: _jwtSettings.Audience,
                 claims: tokenClaims,
-                expires: DateTime.Now.AddMinutes(_jwtSettings.DurationInMinutes),
+                expires: DateTime.UtcNow.AddMinutes(_jwtSettings.DurationInMinutes),
                 signingCredentials: signingCredentials);
 
             return jwtSecurityToken;
