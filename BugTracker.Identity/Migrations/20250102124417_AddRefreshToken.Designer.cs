@@ -3,6 +3,7 @@ using System;
 using BugTracker.Identity.DbContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,9 +12,11 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BugTracker.Identity.Migrations
 {
     [DbContext(typeof(BugTrackerIdentityDbContext))]
-    partial class BugTrackerIdentityDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250102124417_AddRefreshToken")]
+    partial class AddRefreshToken
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -75,10 +78,10 @@ namespace BugTracker.Identity.Migrations
                     b.Property<string>("RefreshToken")
                         .HasColumnType("text");
 
-                    b.Property<DateTime?>("RefreshTokenCreated")
+                    b.Property<DateTime>("RefreshTokenCreated")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<DateTime?>("RefreshTokenExpires")
+                    b.Property<DateTime>("RefreshTokenExpires")
                         .HasColumnType("timestamp with time zone");
 
                     b.Property<string>("SecurityStamp")
@@ -117,6 +120,8 @@ namespace BugTracker.Identity.Migrations
                             NormalizedUserName = "ADMIN@EXAMPLE.COM",
                             PasswordHash = "AQAAAAIAAYagAAAAEC/tlG1etbHRwF9Vi/xhaTlLtnOVA0O+SWvDP0cU+HOY8qIiQbnwcJ14ueFAGwgv9g==",
                             PhoneNumberConfirmed = false,
+                            RefreshTokenCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            RefreshTokenExpires = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             SecurityStamp = "ce907fd5-ccb4-4e96-a7ea-45712a14f5ef",
                             TwoFactorEnabled = false,
                             UserName = "admin@example.com"

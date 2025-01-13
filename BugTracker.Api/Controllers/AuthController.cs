@@ -9,6 +9,7 @@ namespace BugTracker.Api.Controllers
     public class AuthController : ControllerBase
     {
         private readonly IAuthService _authenticationService;
+        private readonly ILogger<AuthController> _logger;
 
         public AuthController(IAuthService authenticationService)
         {
@@ -21,7 +22,7 @@ namespace BugTracker.Api.Controllers
         public async Task<ActionResult<LoginResponse>> Login(LoginRequest loginRequest)
         {
             LoginResponse response = await _authenticationService.Login(loginRequest);
-            if(response.Token == string.Empty)
+            if(response.AccessToken == string.Empty)
             {
                 return Unauthorized();
             }
@@ -40,6 +41,15 @@ namespace BugTracker.Api.Controllers
                 return BadRequest();
             }
 
+            return Ok(response);
+        }
+
+        [HttpPost("refresh")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        public async Task<ActionResult<RefreshTokenResponse>> RefreshToken(RefreshTokenRequest request)
+        {
+            RefreshTokenResponse response = await _authenticationService.RefreshToken(request);
             return Ok(response);
         }
     }

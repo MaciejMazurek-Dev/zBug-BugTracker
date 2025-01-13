@@ -6,5 +6,6 @@ namespace BugTracker.Application.Contracts.Identity
     {
         Task<LoginResponse> Login(LoginRequest loginRequest);
         Task<RegisterResponse> Register(RegisterRequest registrationRequest);
+        Task<RefreshTokenResponse> RefreshToken(RefreshTokenRequest refreshTokenRequest);
     }
 }

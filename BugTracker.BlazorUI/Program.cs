@@ -18,9 +18,11 @@ namespace BugTracker.BlazorUI
             var builder = WebAssemblyHostBuilder.CreateDefault(args);
             builder.RootComponents.Add<App>("#app");
             builder.RootComponents.Add<HeadOutlet>("head::after");
-
             builder.Services.AddTransient<AuthMessageHandler>();
-            builder.Services.AddHttpClient<IClient, Client>(client => client.BaseAddress = new Uri("https://localhost:7082"))
+            builder.Services.AddTransient<AuthenticationDelegatingHandler>();
+            builder.Services.AddHttpClient<IClient, Client>(client => 
+                client.BaseAddress = new Uri("https://localhost:7082"))
+                .AddHttpMessageHandler<AuthenticationDelegatingHandler>()
                 .AddHttpMessageHandler<AuthMessageHandler>();
 
             builder.Services.AddAuthorizationCore();
@@ -37,6 +39,7 @@ namespace BugTracker.BlazorUI
             builder.Services.AddScoped<IIssueStatusService, IssueStatusService>();
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAdminService, AdminService>();
+            builder.Services.AddTransient<ITokenRefreshService, TokenRefreshService>();
 
             await builder.Build().RunAsync();
         }

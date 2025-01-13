@@ -1,4 +1,5 @@
 ﻿using Blazored.LocalStorage;
+using BugTracker.BlazorUI.Providers;
 using System.Net.Http.Headers;
 
 namespace BugTracker.BlazorUI.Handlers
@@ -13,7 +14,7 @@ namespace BugTracker.BlazorUI.Handlers
         }
         protected async override Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
         {
-            var token = await _localStorageService.GetItemAsync<string>("token");
+            var token = await _localStorageService.GetItemAsync<string>(CustomAuthStateProvider.ACCESS_TOKEN_NAME);
             if(!string.IsNullOrEmpty(token))
             {
                 request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", token);
