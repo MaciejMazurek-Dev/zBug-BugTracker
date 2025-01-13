@@ -16,10 +16,17 @@ namespace BugTracker.BlazorUI.Services
             _mapper = mapper;
         }
 
+        public async Task<UserVM> GetUser(string id)
+        {
+            var user = await _client.UserAsync(id);
+            return _mapper.Map<UserVM>(user);
+        }
+
         public async Task<List<UserVM>> GetUsers()
         {
-            var users = await _client.UserAsync();
+            var users = await _client.UserAllAsync();
             return _mapper.Map<List<UserVM>>(users);
         }
+        
     }
 }

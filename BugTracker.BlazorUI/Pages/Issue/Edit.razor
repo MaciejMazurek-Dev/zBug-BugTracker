@@ -1,5 +1,6 @@
 ﻿@page "/issue/edit/{id:int}"
 @attribute [Authorize(Roles = "Admin")]
+
 <h3>Edit issue: @IssueModel.Id</h3>
 
 <EditForm FormName="CreateIssue" Model="@IssueModel" OnValidSubmit="Update">

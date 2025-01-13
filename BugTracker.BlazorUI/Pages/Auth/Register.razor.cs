@@ -13,12 +13,12 @@ namespace BugTracker.BlazorUI.Pages.Auth
 
         protected async Task SubmitRegister()
         {
-            bool result = await AuthenticationService.RegisterAsync(RegisterModel);
-            if(result)
+            var result = await AuthenticationService.RegisterAsync(RegisterModel);
+            if(result.Success)
             {
                 NavigationManager.NavigateTo("/issue");
             }
-            Message = "Something went wrong, please try again.";
+            Message = result.Message;
         }
     }
 }

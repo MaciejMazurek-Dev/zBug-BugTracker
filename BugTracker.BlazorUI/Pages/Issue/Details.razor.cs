@@ -12,7 +12,8 @@ namespace BugTracker.BlazorUI.Pages.Issue
 
         protected async override Task OnInitializedAsync()
         {
-            IssueModel = await IssueService.GetIssueById(Id);
+            var result = await IssueService.GetIssueById(Id);
+            IssueModel = result.Data;
         }
     }
 }

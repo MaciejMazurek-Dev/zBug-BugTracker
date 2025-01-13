@@ -13,12 +13,12 @@ namespace BugTracker.BlazorUI.Pages.Auth
 
         public async Task SubmitLogin()
         {
-            bool result = await AuthenticationService.LoginAsync(LoginModel);
-            if(result)
+            var result = await AuthenticationService.LoginAsync(LoginModel);
+            if(result.Success)
             {
                 NavigationManager.NavigateTo("/issue");
             }
-            Message = "Wrong email or password.";
+            Message = result.Message;
         } 
     }
 }

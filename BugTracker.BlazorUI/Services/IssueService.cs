@@ -15,34 +15,76 @@ namespace BugTracker.BlazorUI.Services
         {
             _mapper = mapper;
         }
-        public async Task<List<IssueVM>> GetAllIssues()
+        public async Task<Response<List<IssueVM>>> GetAllIssues()
         {
-            var issues = await _client.IssueAllAsync();
-            return _mapper.Map<List<IssueVM>>(issues);
+            try
+            {
+                var issues = await _client.IssueAllAsync();
+                var result = _mapper.Map<List<IssueVM>>(issues);
+                return new Response<List<IssueVM>> { Data = result };
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<List<IssueVM>>(ex);
+            }
+            
 
         }
 
-        public async Task<IssueDetailsVM> GetIssueById(int id)
+        public async Task<Response<IssueDetailsVM>> GetIssueById(int id)
         {
-            var issue = await _client.IssueGETAsync(id);
-            return _mapper.Map<IssueDetailsVM>(issue);
+            try
+            {
+                var issue = await _client.IssueGETAsync(id);
+                var result = _mapper.Map<IssueDetailsVM>(issue);
+                return new Response<IssueDetailsVM> { Data = result };
+            }
+            catch(ApiException ex)
+            {
+                return ConvertApiException<IssueDetailsVM>(ex);
+            }
+            
         }
 
-        public async Task CreateIssue(CreateIssueVM issue)
+        public async Task<Response<bool>> CreateIssue(CreateIssueVM issue)
         {
-            var command = _mapper.Map<CreateIssueCommand>(issue);
-            await _client.IssuePOSTAsync(command);
+            try
+            {
+                var command = _mapper.Map<CreateIssueCommand>(issue);
+                await _client.IssuePOSTAsync(command);
+                return new Response<bool>();
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<bool>(ex);
+            }
         }
 
-        public async Task DeleteIssue(int id)
+        public async Task<Response<bool>> DeleteIssue(int id)
         {
-            await _client.IssueDELETEAsync(id);
+            try
+            {
+                await _client.IssueDELETEAsync(id);
+                return new Response<bool>();
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<bool>(ex);
+            }
         }
 
-        public async Task UpdateIssue(IssueDetailsVM issue)
+        public async Task<Response<bool>> UpdateIssue(IssueDetailsVM issue)
         {
-            var issueCommand = _mapper.Map<UpdateIssueCommand>(issue);
-            await _client.IssuePUTAsync(issueCommand);
+            try
+            {
+                var issueCommand = _mapper.Map<UpdateIssueCommand>(issue);
+                await _client.IssuePUTAsync(issueCommand);
+                return new Response<bool>();
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<bool>(ex);
+            }
         }
     }
 }

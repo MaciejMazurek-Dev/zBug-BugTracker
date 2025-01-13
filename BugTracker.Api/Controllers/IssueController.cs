@@ -16,7 +16,6 @@ namespace BugTracker.Api.Controllers
     public class IssueController : ControllerBase
     {
         private readonly IMediator _mediator;
-        private readonly IUserService _userService;
 
         public IssueController(IMediator mediator)
         {

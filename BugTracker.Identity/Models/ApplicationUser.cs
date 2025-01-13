@@ -6,5 +6,8 @@ namespace BugTracker.Identity.Models
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }
+        public DateTime? RefreshTokenCreated { get; set; }
+        public DateTime? RefreshTokenExpires { get; set; }
+        public string? RefreshToken { get; set; }
     }
 }

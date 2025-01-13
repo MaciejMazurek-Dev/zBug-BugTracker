@@ -2,7 +2,6 @@
 using Blazored.LocalStorage;
 using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Models.Authentication;
-using BugTracker.BlazorUI.Pages.Auth;
 using BugTracker.BlazorUI.Providers;
 using BugTracker.BlazorUI.Services.HttpClientBase;
 
@@ -13,7 +12,7 @@ namespace BugTracker.BlazorUI.Services
         private readonly CustomAuthStateProvider _customauthStateProvider;
         private readonly IMapper _mapper;
         public AuthenticationService(
-            IClient client, 
+            IClient client,
             ILocalStorageService localStorage,
             CustomAuthStateProvider customauthStateProvider,
             IMapper mapper)
@@ -23,17 +22,23 @@ namespace BugTracker.BlazorUI.Services
             _mapper = mapper;
         }
 
-        public async Task<bool> LoginAsync(LoginVM loginVM)
+        public async Task<Response<LoginResponse>> LoginAsync(LoginVM loginVM)
         {
-            var loginRequest = _mapper.Map<LoginRequest>(loginVM);
-            LoginResponse loginResponse = await _client.LoginAsync(loginRequest);
-            if(loginResponse.Token != string.Empty)
+            try
             {
-                await _localStorage.SetItemAsync("token", loginResponse.Token);
-                await _customauthStateProvider.LogIn();
-                return true;
+                var loginRequest = _mapper.Map<LoginRequest>(loginVM);
+                LoginResponse loginResponse = await _client.LoginAsync(loginRequest);
+                if (loginResponse.AccessToken != string.Empty &&
+                    loginResponse.RefreshToken != string.Empty)
+                {
+                    await _customauthStateProvider.LogIn(loginResponse.AccessToken, loginResponse.RefreshToken);
+                }
+                return new Response<LoginResponse> { Data = loginResponse };
             }
-            return false;
+            catch (ApiException ex)
+            {
+                return ConvertApiException<LoginResponse>(ex);
+            }
         }
 
         public async Task Logout()
@@ -41,15 +46,22 @@ namespace BugTracker.BlazorUI.Services
             await _customauthStateProvider.LogOut();
         }
 
-        public async Task<bool> RegisterAsync(RegisterVM registerVM)
+        public async Task<Response<RegisterResponse>> RegisterAsync(RegisterVM registerVM)
         {
-            var registerRequest = _mapper.Map<RegisterRequest>(registerVM);
-            RegisterResponse registerResponse = await _client.RegisterAsync(registerRequest);
-            if(!string.IsNullOrEmpty(registerResponse.UserId))
+            try
             {
-                return true;
+                var registerRequest = _mapper.Map<RegisterRequest>(registerVM);
+                RegisterResponse registerResponse = await _client.RegisterAsync(registerRequest);
+                if (!string.IsNullOrEmpty(registerResponse.UserId))
+                {
+                    return new Response<RegisterResponse> { Data = registerResponse };
+                }
+                return new Response<RegisterResponse> { Message = "Wrong email or password." };
             }
-            return false;
+            catch (ApiException ex)
+            {
+                return ConvertApiException<RegisterResponse>(ex);
+            }
         }
     }
 }

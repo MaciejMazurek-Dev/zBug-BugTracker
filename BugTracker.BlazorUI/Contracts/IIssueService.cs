@@ -5,10 +5,10 @@ namespace BugTracker.BlazorUI.Contracts
 {
     public interface IIssueService
     {
-        Task<List<IssueVM>> GetAllIssues();
-        Task<IssueDetailsVM> GetIssueById(int id);
-        Task CreateIssue(CreateIssueVM issue);
-        Task UpdateIssue(IssueDetailsVM issue);
-        Task DeleteIssue(int id);
+        Task<Response<List<IssueVM>>> GetAllIssues();
+        Task<Response<IssueDetailsVM>> GetIssueById(int id);
+        Task<Response<bool>> CreateIssue(CreateIssueVM issue);
+        Task<Response<bool>> UpdateIssue(IssueDetailsVM issue);
+        Task<Response<bool>> DeleteIssue(int id);
     }
 }

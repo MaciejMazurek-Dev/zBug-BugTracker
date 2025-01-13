@@ -2,15 +2,8 @@
 
 @page "/"
 
-
-<PageTitle>Bug Tracker</PageTitle>
 <AuthorizeView>
-    <Authorized>
-        <a class="btn btn-primary" href="/issue/create">CREATE NEW ISSUE</a>
-    </Authorized>
     <NotAuthorized>
         <RedirectToLogin />
     </NotAuthorized>
 </AuthorizeView>
-
-

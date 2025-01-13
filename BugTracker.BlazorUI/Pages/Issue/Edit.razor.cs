@@ -26,7 +26,8 @@ namespace BugTracker.BlazorUI.Pages.Issue
 
         protected async override Task OnParametersSetAsync()
         {
-            IssueModel = await IssueService.GetIssueById(Id);
+            var result = await IssueService.GetIssueById(Id);
+            IssueModel = result.Data;
             IssuePriorities = await IssuePriorityService.GetAllIssuePriorities();
             IssueStatuses = await IssueStatusService.GetAllIssueStatuses();
             IssueTypes = await IssueTypeService.GetAllIssueTypes();

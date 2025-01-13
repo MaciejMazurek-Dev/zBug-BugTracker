@@ -1,11 +1,12 @@
 ﻿@page "/auth/login"
 
-@if (!string.IsNullOrEmpty(Message))
-{
-    <div class="alert alert-danger">
-        @Message
-    </div>
-}
+<div class="bg-violet">
+    @if (!string.IsNullOrEmpty(Message))
+    {
+        <div class="alert alert-danger">
+            @Message
+        </div>
+    }
     <div class="d-flex justify-content-center align-items-center vh-100 bg-orange">
         <div class="p-4 border rounded bg-white">
             <h1 class="text-body-bg-color text-center">Bug Tracker</h1>
@@ -29,4 +30,5 @@
                 <a href="/auth/register">Register here</a>
             </div>
         </div>
+    </div>
 </div>

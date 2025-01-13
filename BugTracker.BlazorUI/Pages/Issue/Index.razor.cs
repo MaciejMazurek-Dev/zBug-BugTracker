@@ -11,7 +11,8 @@ namespace BugTracker.BlazorUI.Pages.Issue
 
         protected async override Task OnInitializedAsync()
         {
-            Issues = await issueService.GetAllIssues();
+            var result = await issueService.GetAllIssues();
+            Issues = result.Data;
         }
 
         public async Task DeleteIssue(int id)

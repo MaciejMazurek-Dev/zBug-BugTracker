@@ -104,7 +104,7 @@ h1:focus {
     padding-bottom: 4px;
 }
 
-.nav {
+.nav, .bg-violet {
     background-color: rgb(145,118,226);
 }
 
