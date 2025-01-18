@@ -7,9 +7,10 @@ services:
       dockerfile: BugTracker.Api/Dockerfile
     ports:
         - "5000:5000"
-        - "5001:5001"
-    
-  bugtracker.database:
+    depends_on:
+        - bugtracker.db
+
+  bugtracker.db:
     image: postgres:latest
     container_name: bugtracker.database
     environment:
@@ -18,10 +19,15 @@ services:
         - POSTGRES_PASSWORD=postgres
     ports:
         - 5432:5432
-
-
-   
-    
-
-
-  
+    volumes:
+        - ./postgres/bugtracker-db:/var/postresql/data
+        - ./BugTracker.Api/BugTrackerDBInitData.sql:/docker-entrypoint-initdb.d/BugTrackerDBInitData.sql
+        - ./BugTracker.Api/BugTrackerDBIdentityInitData.sql:/docker-entrypoint-initdb.d/BugTrackerDBIdentityInitData.sql
+ 
+  bugtracker.blazor:
+    container_name: bugtracker.blazorui
+    build:
+        context: ./BugTracker.BlazorUI
+        dockerfile: Dockerfile
+    ports:
+       - 5003:5003
