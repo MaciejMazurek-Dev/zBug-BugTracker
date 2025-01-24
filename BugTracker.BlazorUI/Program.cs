@@ -20,8 +20,9 @@ namespace BugTracker.BlazorUI
             builder.RootComponents.Add<HeadOutlet>("head::after");
             builder.Services.AddTransient<AuthMessageHandler>();
             builder.Services.AddTransient<AuthenticationDelegatingHandler>();
-            builder.Services.AddHttpClient<IClient, Client>(client => 
-                client.BaseAddress = new Uri("http://localhost:5000"))
+            builder.Services.AddHttpClient<IClient, Client>(client =>
+                //client.BaseAddress = new Uri("http://localhost:5000"))
+                client.BaseAddress = new Uri("https://zbug.pl/"))
                 .AddHttpMessageHandler<AuthenticationDelegatingHandler>()
                 .AddHttpMessageHandler<AuthMessageHandler>();
 

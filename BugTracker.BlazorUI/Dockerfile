@@ -9,7 +9,7 @@ RUN dotnet publish -c Release -o /app/publish
 FROM nginx:alpine 
 EXPOSE 5003
 COPY ["nginx.conf" , "/etc/nginx/nginx.conf"]
-COPY --from=build /app/publish/wwwroot /usr/share/nginx/html
+COPY --from=build /app/publish/wwwroot /usr/share/nginx/bugtracker/blazor/
 
 
 
