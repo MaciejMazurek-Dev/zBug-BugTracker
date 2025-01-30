@@ -14,6 +14,9 @@ namespace BugTracker.Identity.DbContext
         protected override void OnModelCreating(ModelBuilder builder)
         {
             builder.ApplyConfigurationsFromAssembly(typeof(BugTrackerIdentityDbContext).Assembly);
+            builder.Entity<ApplicationUser>()
+                .Property(p => p.InternalUserId)
+                .ValueGeneratedOnAdd();
             base.OnModelCreating(builder);
         }
     }

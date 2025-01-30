@@ -9,5 +9,6 @@ namespace BugTracker.Identity.Models
         public DateTime? RefreshTokenCreated { get; set; }
         public DateTime? RefreshTokenExpires { get; set; }
         public string? RefreshToken { get; set; }
+        public int InternalUserId { get; set; }
     }
 }
