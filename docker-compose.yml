@@ -1,28 +1,28 @@
 services:
-  bugtracker.api:
-    container_name: bugtracker.api
+  bugtracker_api:
+    container_name: bugtracker_api
     build:
       context: ./
       dockerfile: ./Bugtracker.Api/Dockerfile
     ports:
         - "5000:5000"
     depends_on:
-        - bugtracker.db
-        - bugtracker.identity.db
+        - bugtracker_db
+        - bugtracker_identity.db
 
-  bugtracker.blazor:
-    container_name: bugtracker.blazorui
+  bugtracker_blazor:
+    container_name: bugtracker_blazorui
     build:
         context: ./BugTracker.BlazorUI
         dockerfile: ./Dockerfile
     ports:
        - 5003:5003 
 
-  bugtracker.db:
+  bugtracker_db:
     image: postgres:latest
-    container_name: bugtracker.db
+    container_name: bugtracker_db
     environment:
-        - POSTGRES_DB=bugtracker
+        - POSTGRES_DB=bugtracker_db
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
     ports:
@@ -31,11 +31,11 @@ services:
         - bt-db-volume:/var/lib/postgresql/data
         - ./BugTracker.Api/BugTrackerDBInitData.sql:/docker-entrypoint-initdb.d/BugTrackerDBInitData.sql
         
-  bugtracker.identity.db:
+  bugtracker_identity_db:
     image: postgres:latest
-    container_name: bugtracker.identity.db
+    container_name: bugtracker_identity_db
     environment:
-        - POSTGRES_DB=bugtracker.identity
+        - POSTGRES_DB=bugtracker_identity_db
         - POSTGRES_USER=postgres
         - POSTGRES_PASSWORD=postgres
     ports:
