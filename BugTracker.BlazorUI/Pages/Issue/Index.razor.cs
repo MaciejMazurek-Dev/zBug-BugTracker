@@ -1,28 +1,19 @@
 ﻿using BugTracker.BlazorUI.Contracts;
 using BugTracker.BlazorUI.Models.Issue;
 using Microsoft.AspNetCore.Components;
+using Microsoft.AspNetCore.Components.QuickGrid;
 
 namespace BugTracker.BlazorUI.Pages.Issue
 {
     public partial class Index
     {
         [Inject] IIssueService issueService { get; set; }
-        List<IssueVM> Issues { get; set; } = new List<IssueVM>();
-
+        IQueryable<IssueVM> Issues { get; set; }
+        
         protected async override Task OnInitializedAsync()
         {
             var result = await issueService.GetAllIssues();
-            Issues = result.Data;
-        }
-
-        public async Task DeleteIssue(int id)
-        {
-            await issueService.DeleteIssue(id);
-        }
-
-        public async Task UpdateIssue(int id)
-        {
-            await issueService.GetIssueById(id);
+            Issues = result.Data.AsQueryable();
         }
     }
 }

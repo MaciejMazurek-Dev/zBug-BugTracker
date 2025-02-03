@@ -27,10 +27,7 @@ namespace BugTracker.BlazorUI.Services
             {
                 return ConvertApiException<List<IssueVM>>(ex);
             }
-            
-
         }
-
         public async Task<Response<IssueDetailsVM>> GetIssueById(int id)
         {
             try
@@ -45,7 +42,6 @@ namespace BugTracker.BlazorUI.Services
             }
             
         }
-
         public async Task<Response<bool>> CreateIssue(CreateIssueVM issue)
         {
             try
@@ -59,7 +55,6 @@ namespace BugTracker.BlazorUI.Services
                 return ConvertApiException<bool>(ex);
             }
         }
-
         public async Task<Response<bool>> DeleteIssue(int id)
         {
             try
@@ -72,7 +67,6 @@ namespace BugTracker.BlazorUI.Services
                 return ConvertApiException<bool>(ex);
             }
         }
-
         public async Task<Response<bool>> UpdateIssue(IssueDetailsVM issue)
         {
             try
@@ -84,6 +78,19 @@ namespace BugTracker.BlazorUI.Services
             catch (ApiException ex)
             {
                 return ConvertApiException<bool>(ex);
+            }
+        }
+        public async Task<Response<List<IssueVM>>> GetIssuesByFilter(int? type, int? status, int? priority)
+        {
+            try
+            {
+                var issues = await _client.FiltersAsync(type, status, priority);
+                var result = _mapper.Map<List<IssueVM>>(issues);
+                return new Response<List<IssueVM>> { Data = result };
+            }
+            catch (ApiException ex)
+            {
+                return ConvertApiException<List<IssueVM>> (ex);
             }
         }
     }

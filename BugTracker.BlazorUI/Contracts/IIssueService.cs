@@ -10,5 +10,6 @@ namespace BugTracker.BlazorUI.Contracts
         Task<Response<bool>> CreateIssue(CreateIssueVM issue);
         Task<Response<bool>> UpdateIssue(IssueDetailsVM issue);
         Task<Response<bool>> DeleteIssue(int id);
+        Task<Response<List<IssueVM>>> GetIssuesByFilter(int? type, int? status, int? priority);
     }
 }

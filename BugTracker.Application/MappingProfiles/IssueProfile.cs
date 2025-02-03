@@ -3,6 +3,7 @@ using BugTracker.Application.Features.Issue.Commands.CreateIssue;
 using BugTracker.Application.Features.Issue.Commands.UpdateIssue;
 using BugTracker.Application.Features.Issue.Queries.GetAllIssues;
 using BugTracker.Application.Features.Issue.Queries.GetIssueById;
+using BugTracker.Application.Features.Issue.Queries.GetIssuesByFilter;
 using BugTracker.Domain;
 
 namespace BugTracker.Application.MappingProfiles
@@ -15,6 +16,7 @@ namespace BugTracker.Application.MappingProfiles
             CreateMap<Issue, IssueDto>();
             CreateMap<CreateIssueCommand, Issue>();
             CreateMap<UpdateIssueCommand, Issue>();
+            CreateMap<Issue, IssuesByFilterDto>();
         }
     }
 }

@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static Microsoft.EntityFrameworkCore.DbLoggerCategory;
 
 namespace BugTracker.Persistence.Repositories
 {
@@ -34,6 +35,20 @@ namespace BugTracker.Persistence.Repositories
                 .Include(q => q.IssuePriority)
                 .FirstOrDefaultAsync(q => q.Id == id);
             return issue;
+        }
+
+        public async Task<List<Issue>> GetIssuesByFilter(int? type, int? priority, int? status)
+        {
+            var issues = await _dbContext.Issues
+                .Include(q => q.IssueStatus)
+                .Include(q => q.IssueType)
+                .Include(q => q.IssuePriority)
+                .Where(q => !type.HasValue || q.IssueTypeId == type)
+                .Where(q => !status.HasValue || q.IssueStatusId == status)
+                .Where(q => !priority.HasValue || q.IssuePriorityId == priority)
+                .ToListAsync();
+
+            return issues;
         }
 
         public async Task<List<Issue>> GetIssuesByUser(string userId)

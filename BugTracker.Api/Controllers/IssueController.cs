@@ -7,6 +7,7 @@ using BugTracker.Application.Features.Issue.Commands.UpdateIssue;
 using BugTracker.Application.Features.Issue.Commands.DeleteIssue;
 using BugTracker.Application.Contracts.Identity;
 using Microsoft.AspNetCore.Authorization;
+using BugTracker.Application.Features.Issue.Queries.GetIssuesByFilter;
 
 namespace BugTracker.Api.Controllers
 {
@@ -38,6 +39,24 @@ namespace BugTracker.Api.Controllers
             var issue = await _mediator.Send(new GetIssueByIdQuery { Id = id });
             return Ok(issue);
         }
+
+        [HttpGet("filters")]
+        [ProducesResponseType(StatusCodes.Status200OK)]
+        public async Task<ActionResult<List<IssuesByFilterDto>>> GetIssuesByFilter(
+            [FromQuery] int? type,
+            [FromQuery] int? priority,
+            [FromQuery] int? status)
+        {
+            var issues = await _mediator.Send(
+                new GetIssuesByFilterQuery
+                {
+                    IssueTypeId = type,
+                    IssuePriorityId = priority,
+                    IssueStatusId = status
+                });
+            return Ok(issues);
+        }
+            
 
         [HttpPost]
         [ProducesResponseType(StatusCodes.Status201Created)]

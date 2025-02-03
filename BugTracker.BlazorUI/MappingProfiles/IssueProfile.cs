@@ -12,6 +12,7 @@ namespace BugTracker.BlazorUI.MappingProfiles
             CreateMap<IssueDetailsDto, IssueDetailsVM>();
             CreateMap<CreateIssueVM, CreateIssueCommand>();
             CreateMap<IssueDetailsVM, UpdateIssueCommand>();
+            CreateMap<IssuesByFilterDto, IssueVM>();
         }
     }
 }

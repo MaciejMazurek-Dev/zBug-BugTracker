@@ -1,0 +1,66 @@
+﻿@using Microsoft.AspNetCore.Components.QuickGrid
+
+@page "/issue/filters"
+@attribute [Authorize]
+
+<QuickGrid ItemsProvider="@issuesProvider" @ref="grid" Class="table table-striped table-hover">
+    <PropertyColumn Title="Id" Property="@(issue => issue.Id)" Sortable="true" />
+    <PropertyColumn Title="Summary" Property="@(issue => issue.Summary)" Sortable="true" Class="text-truncate"/>
+    <PropertyColumn Title="Type" Property="@(issue => issue.IssueType.Name)" Sortable="true">
+        <ColumnOptions>
+            <InputSelect @bind-Value="@selectedTypeId" @bind-Value:after="FilterChangedAsync">
+                <option value="" selected disabled>
+                    Select issue type...
+                </option>
+                @foreach (var issueType in IssueTypes)
+                {
+                    <option value="@issueType.Id">@issueType.Name</option>
+                }
+            </InputSelect>
+        </ColumnOptions>
+    </PropertyColumn>
+    <PropertyColumn Title="Status" Property="@(issue => issue.IssueStatus.Name)" Sortable="true">
+        <ColumnOptions>
+            <InputSelect @bind-Value="@selectedStatusId" @bind-Value:after="FilterChangedAsync">
+                <option value="" selected disabled>
+                    Select issue status...
+                </option>
+                @foreach (var issueStatus in IssueStatuses)
+                {
+                    <option value="@issueStatus.Id">@issueStatus.Name</option>
+                }
+            </InputSelect>
+        </ColumnOptions>
+    </PropertyColumn>
+    <PropertyColumn Title="Priority" Property="@(issue => issue.IssuePriority.Name)" Sortable="true">
+        <ColumnOptions>
+            <InputSelect @bind-Value="@selectedPriorityId" @bind-Value:after="FilterChangedAsync">
+                <option value="" selected disabled>
+                    Select issue priority...
+                </option>
+                @foreach (var issuePriority in IssuePriorities)
+                {
+                    <option value="@issuePriority.Id">@issuePriority.Name</option>
+                }
+            </InputSelect>
+        </ColumnOptions>
+    </PropertyColumn>
+    <PropertyColumn Title="Reporter" Property="@(issue => issue.ReporterId)" Sortable="true" />
+    <PropertyColumn Title="Assignee" Property="@(issue => issue.AssigneeId)" Sortable="true" />
+
+    <TemplateColumn Title="Details" Context="issueContext">
+        <a href="/issue/@issueContext.Id" class="btn btn-info">Details</a>
+    </TemplateColumn>
+
+    <TemplateColumn Title="Edit" Context="issueContext">
+        <AuthorizeView Roles="Admin">
+            <a href="/issue/edit/@issueContext.Id" class="btn btn-primary">Edit</a>
+        </AuthorizeView>
+    </TemplateColumn>
+
+    <TemplateColumn Title="Delete" Context="issueContext">
+        <AuthorizeView Roles="Admin">
+            <a href="/issue/delete/@issueContext.Id" class="btn btn-danger">Delete</a>
+        </AuthorizeView>
+    </TemplateColumn>
+</QuickGrid>
