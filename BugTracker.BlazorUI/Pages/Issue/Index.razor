@@ -3,16 +3,16 @@
 @page "/issue"
 @attribute [Authorize]
 
-<QuickGrid Items="@Issues" Class="table table-striped table-hover">
+<QuickGrid Items="@Issues" Class="table table-striped table-hover align-middle">
     <PropertyColumn Title="Id" Property="@(issue => issue.Id)" Sortable="true" />
-    <PropertyColumn Title="Summary" Property="@(issue => issue.Summary)" Sortable="true" Class="text-truncate"/>
+    <PropertyColumn Title="Summary" Property="@(issue => issue.Summary)" Sortable="true" />
     <PropertyColumn Title="Type" Property="@(issue => issue.IssueType.Name)" Sortable="true"/>
     <PropertyColumn Title="Status" Property="@(issue => issue.IssueStatus.Name)" Sortable="true" />
     <PropertyColumn Title="Priority" Property="@(issue => issue.IssuePriority.Name)" Sortable="true" />
     <PropertyColumn Title="Reporter" Property="@(issue => issue.ReporterId)" Sortable="true" />
     <PropertyColumn Title="Assignee" Property="@(issue => issue.AssigneeId)" Sortable="true" />
     <TemplateColumn Title="Details" Context="issueContext">
-        <a href="/issue/@issueContext.Id" class="btn btn-info">Details</a>
+        <a href="/issue/@issueContext.Id" class="btn btn-success">Details</a>
     </TemplateColumn>
 
 

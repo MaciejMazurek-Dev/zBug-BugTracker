@@ -5,17 +5,17 @@
 
     <div class="d-flex justify-content-center vh-100">
         <div class="flex-column w-50">
-            <h3 class="m-2 mt-3 text-dark-emphasis">Add New Issue</h3>
+            <h3 class="m-2 mt-3 text-dark-emphasis">Add new issue</h3>
             <EditForm FormName="CreateIssue" Model="@IssueModel" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="m-2">
-                    <label class="fw-bold text-secondary" for="summary">Summary:</label>
+                    <label class="fw-bold text-secondary mb-1" for="summary">Summary:</label>
                     <InputTextArea class="form-control" id="summary" @bind-Value="IssueModel.Summary"></InputTextArea>
                 </div>
                 <div class="m-2">
-                    <label class="fw-bold text-secondary" for="description">Description:</label>
-                    <InputTextArea class="form-control" id="description" @bind-Value="IssueModel.Description"></InputTextArea>
+                    <label class="fw-bold text-secondary mb-1" for="description">Description:</label>
+                    <InputTextArea class="form-control" rows="6" id="description" @bind-Value="IssueModel.Description"></InputTextArea>
                 </div>
                 <div class="m-2">
                     <label class="fw-bold text-secondary" for="type">Type:</label>
