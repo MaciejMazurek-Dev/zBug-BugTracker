@@ -21,7 +21,17 @@ namespace BugTracker.Application.Features.Issue.Queries.GetAllIssues
         public async Task<List<IssueDto>> Handle(GetAllIssuesQuery request, CancellationToken cancellationToken)
         {
             var issues = await _issueRepository.GetAllIssues();
-
+            var users = await _userService.GetUsers();
+            foreach (var issue in issues)
+            {
+                var tempUser = users.FirstOrDefault(u => u.Id == issue.ReporterId);
+                issue.ReporterId = tempUser.InternalUserId;
+                if(issue.AssigneeId != null)
+                {
+                    tempUser = users.FirstOrDefault(u => u.Id == issue.AssigneeId);
+                    issue.AssigneeId = tempUser.InternalUserId;
+                }
+            }
             return _mapper.Map<List<IssueDto>>(issues);
         }
     }

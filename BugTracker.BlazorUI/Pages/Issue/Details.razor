@@ -1,26 +1,26 @@
 ﻿@page "/issue/{id:int}"
 @attribute [Authorize]
 
-
-
-<div class="d-flex justify-content-center vh-100" >
-    <div class="flex-column w-50">
-        <h3 class="mt-2">Issue Details</h3>
-        <label for="issue" class="form-label">Issue ID:</label>
-        <input id="issue" class="form-control" value="@IssueModel.Id" disabled />
-        <label for="summary" class="form-label">Summary</label>
-        <textarea id="summary" class="form-control" value="@IssueModel.Summary" disabled />
-        <label for="description" class="form-label">Description</label>
-        <textarea id="description" class="form-control" value="@IssueModel.Description" disabled />
-        <label for="priority" class="form-label">Priority</label>
-        <input id="priority" class="form-control" value="@IssueModel.IssuePriority.Name" disabled />
-        <label for="type" class="form-label">Type</label>
-        <input id="type" class="form-control" value="@IssueModel.IssueType.Name" disabled />
-        <label for="status" class="form-label">Status</label>
-        <input id="status" class="form-control" value="@IssueModel.IssueStatus.Name" disabled />
-        <label for="assignee" class="form-label">Assignee</label>
-        <input id="assignee" class="form-control" value="@IssueModel.AssigneeId" disabled />
-        <label for="reporter" class="form-label">Reporter</label>
-        <input id="reporter" class="form-control" value="@IssueModel.ReporterId" disabled />
+<div class="bg-violet">
+    <div class="d-flex justify-content-center vh-100">
+        <div class="flex-column w-50">
+            <h3 class="mt-2">Issue Details</h3>
+            <label for="issue" class="form-label">Issue ID:</label>
+            <input id="issue" class="form-control" value="@IssueModel.Id" disabled />
+            <label for="summary" class="form-label">Summary</label>
+            <textarea id="summary" class="form-control" value="@IssueModel.Summary" disabled />
+            <label for="description" class="form-label">Description</label>
+            <textarea id="description" class="form-control" value="@IssueModel.Description" disabled />
+            <label for="priority" class="form-label">Priority</label>
+            <input id="priority" class="form-control" value="@IssueModel.IssuePriority.Name" disabled />
+            <label for="type" class="form-label">Type</label>
+            <input id="type" class="form-control" value="@IssueModel.IssueType.Name" disabled />
+            <label for="status" class="form-label">Status</label>
+            <input id="status" class="form-control" value="@IssueModel.IssueStatus.Name" disabled />
+            <label for="assignee" class="form-label">Assignee ID</label>
+            <input id="assignee" class="form-control" value="@IssueModel.AssigneeId" disabled />
+            <label for="reporter" class="form-label">Reporter ID</label>
+            <input id="reporter" class="form-control" value="@IssueModel.ReporterId" disabled />
+        </div>
     </div>
 </div>

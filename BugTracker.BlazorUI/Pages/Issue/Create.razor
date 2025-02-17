@@ -1,17 +1,17 @@
 ﻿@page "/issue/create"
 @attribute [Authorize]
 
-<div class="bg-light">
+<div class="bg-violet">
 
     <div class="d-flex justify-content-center vh-100">
         <div class="flex-column w-50">
-            <h3 class="m-2 mt-3 text-dark-emphasis">Add new issue</h3>
+            <h3 class="m-2 mt-3 text-dark-emphasis text-decoration-underline">Add new issue:</h3>
             <EditForm FormName="CreateIssue" Model="@IssueModel" OnValidSubmit="Submit">
                 <DataAnnotationsValidator />
                 <ValidationSummary />
                 <div class="m-2">
                     <label class="fw-bold text-secondary mb-1" for="summary">Summary:</label>
-                    <InputTextArea class="form-control" id="summary" @bind-Value="IssueModel.Summary"></InputTextArea>
+                    <InputTextArea class="form-control" rows="1" id="summary" @bind-Value="IssueModel.Summary"></InputTextArea>
                 </div>
                 <div class="m-2">
                     <label class="fw-bold text-secondary mb-1" for="description">Description:</label>
@@ -19,7 +19,8 @@
                 </div>
                 <div class="m-2">
                     <label class="fw-bold text-secondary" for="type">Type:</label>
-                    <InputSelect class="form-control" id="type" @bind-Value="IssueModel.IssueTypeId">
+                    <InputSelect class="form-control" id="type" @bind-Value="IssueModel.IssueTypeId" DisplayName="Type">
+                        <option>--Please select type--</option>
                         @foreach (var issueType in IssueTypes)
                         {
                             <option value="@issueType.Id">@issueType.Name</option>
@@ -28,14 +29,15 @@
                 </div>
                 <div class="m-2">
                     <label class="fw-bold text-secondary" for="priority">Priority:</label>
-                    <InputSelect class="form-control" id="priority" @bind-Value="IssueModel.IssuePriorityId">
+                    <InputSelect class="form-control" id="priority" @bind-Value="IssueModel.IssuePriorityId" DisplayName="Priority">
+                        <option>--Please select priority--</option>
                         @foreach (var issuePriority in IssuePriorities)
                         {
                             <option value="@issuePriority.Id">@issuePriority.Name</option>
                         }
                     </InputSelect>
                 </div>
-                <div class="m-2">
+                <div class="m-2 text-end">
                     <button class="btn btn-violet" type="submit">Add issue</button>
                 </div>
             </EditForm>

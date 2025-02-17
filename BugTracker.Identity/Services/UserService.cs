@@ -14,7 +14,7 @@ namespace BugTracker.Identity.Services
         private readonly UserManager<ApplicationUser> _userManager;
         private readonly RoleManager<IdentityRole> _roleManager;
 
-        public UserService(IHttpContextAccessor httpContextAccessor, 
+        public UserService(IHttpContextAccessor httpContextAccessor,
             UserManager<ApplicationUser> userManager,
             RoleManager<IdentityRole> roleManager)
         {
@@ -45,11 +45,10 @@ namespace BugTracker.Identity.Services
                 {
                     Id = u.Id,
                     FirstName = u.FirstName,
-                    LastName = u.LastName
+                    LastName = u.LastName,
+                    InternalUserId = ("BTU-00" + u.InternalUserId.ToString())
                 }).ToListAsync();
             return users;
         }
-        
-
     }
 }

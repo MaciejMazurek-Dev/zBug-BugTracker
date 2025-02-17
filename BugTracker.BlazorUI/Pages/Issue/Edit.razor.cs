@@ -23,7 +23,11 @@ namespace BugTracker.BlazorUI.Pages.Issue
         protected List<IssueTypeVM> IssueTypes { get; set; } = new();
         protected List<IssueStatusVM> IssueStatuses { get; set; } = new();
         protected List<UserVM> UsersList { get; set; } = new();
-
+        private readonly NavigationManager _navigation;
+        public Edit(NavigationManager navigationManager)
+        {
+            _navigation = navigationManager;
+        }
         protected async override Task OnParametersSetAsync()
         {
             var result = await IssueService.GetIssueById(Id);
@@ -36,7 +40,12 @@ namespace BugTracker.BlazorUI.Pages.Issue
 
         public async Task Update()
         {
-            await IssueService.UpdateIssue(IssueModel);
+            var result = await IssueService.UpdateIssue(IssueModel);
+            if(result.Success)
+            {
+                _navigation.NavigateTo("/issue");
+            }
+            // TODO: Add error messages
         }
     }
 }
